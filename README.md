@@ -1,4 +1,4 @@
-# lan
+# laGai
 
 ## Project setup
 ```
