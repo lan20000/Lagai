@@ -1,3 +1,10 @@
+
+// const path = require(path);
+//路径过滤器
+// function resolve(dir) {
+//     return path.join(__dirname, dir)
+// }
+
 module.exports = {
     pages: {
         index: {
@@ -21,5 +28,18 @@ module.exports = {
         subpage: 'src/main.ts'
     },
     //关闭严格模式
-    lintOnSave:false
+    lintOnSave: false,
+    //webpack配置
+    // configureWebpack: {
+    //     plugins: [
+            
+    //     ]
+    // }
+    // 第三方插件的选项
+    pluginOptions:{
+        "plugins": [["import", {
+            "libraryName": "iview",
+            "libraryDirectory": "src/components"
+        }]]
+    }
 }

@@ -1,10 +1,10 @@
 <template>
-  <div id="app">
-    <foot></foot>
+  <div id="app">  
+    <router-view></router-view>
   </div>
 </template>
 <script>
-import foot from '@/components/foot/footMuen.vue'; // @ is an alias to /src
+// import foot from '@/components/foot/footMuen.vue'; // @ is an alias to /src
 export default {
    data(){
       return {
@@ -12,13 +12,13 @@ export default {
       }
    },
    components:{
-     foot
    }
 }
 </script>
 
 <style lang="scss">
   #app {
+    height: 100%;
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
