@@ -2,6 +2,12 @@
   "name": "lagai",
   "version": "0.1.0",
   "private": true,
+  "devServer": {
+    "overlay": {
+      "warnings": true,
+      "errors": true
+    }
+  },
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -13,6 +19,7 @@
     "vue-class-component": "^6.0.0",
     "vue-property-decorator": "^7.0.0",
     "vue-router": "^3.0.1",
+    "vue-ydui": "^1.2.6",
     "vuex": "^3.0.1"
   },
   "devDependencies": {

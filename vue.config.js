@@ -19,5 +19,7 @@ module.exports = {
         // 并且如果找不到的话，就回退到 `public/index.html`。
         // 输出文件名会被推导为 `subpage.html`。
         subpage: 'src/main.ts'
-    }
+    },
+    //关闭严格模式
+    lintOnSave:false
 }
