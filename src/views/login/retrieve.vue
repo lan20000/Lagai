@@ -1,7 +1,7 @@
 <template>
   <Layout >
         <Header class="Header">
-          <Col span="12" aligin="left" class="iconfont icon-fanhui" style="text-align:left;" @click="router.go(-1)"></Col>
+          <Col span="12" aligin="left" style="text-align:left;" ><span class="iconfont icon-fanhui" @click="router.go(-1)"></span></Col>
           <Col span="12" aligin="right"></Col>
         </Header>
         <Content>

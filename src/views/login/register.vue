@@ -1,7 +1,7 @@
 <template>
-  <Layout >
+  <Layout>
         <Header class="Header">
-          <Col span="12" aligin="left" class="iconfont icon-fanhui" style="text-align:left;" @click="router.go(-1)"></Col>
+          <Col span="12" aligin="left" style="text-align:left;"><span @click="$router.go(-1);" class="iconfont icon-fanhui"></span></Col>
           <Col span="12" aligin="right"></Col>
         </Header>
         <Content>
@@ -9,7 +9,7 @@
               <Button icon="ios-reverse-camera" class="Upload"></Button>
           </Upload>
           <Row class="row">              
-              <Col span="18" push="6"><input type="text" placeholder=""  /></Col>
+              <Col span="18" push="6"><input type="text" placeholder="" /></Col>
               <Col span="6" pull="18">昵称</Col>
           </Row>
           <Row class="row">              
@@ -35,6 +35,13 @@
 export default {
   data() {
     return {};
+  },
+  methods:{
+    routers(){      
+    }
+  },
+  mounted(){
+    // this.routers();
   },
   components: {}
 };

@@ -3,7 +3,7 @@
     <Layout class="layout-content">
         <Header class="login-top">
                 <Col span="12" align="left"> 
-                    <span class="iconfont icon-fanhui fanhui"></span>
+                    <span class="iconfont icon-fanhui fanhui" @click="$router.go(-1);"></span>
                 </Col>
                 <Col span="12" align="right">
                     <!-- <span>注册</span> -->
