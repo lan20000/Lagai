@@ -1,13 +1,31 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
-  </div>
+ <Layout>
+        <Header>Header</Header>
+        <Content>Content</Content>
+        <Footer>          
+        <Row>
+            <Col span="8">消息</Col>
+            <Col span="8">看看</Col>
+            <Col span="8"><router-link to="entrance" style="color:#595f77;">我的</router-link></Col>
+        </Row>
+        </Footer>
+  </Layout>
 </template>
 
-<script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-
-
-export default class Home extends Vue {}
+<script>
+export default {
+  components: {},
+  props: {},
+  data() {
+    return {};
+  },
+  watch: {},
+  computed: {},
+  methods: {},
+  created() {},
+  mounted() {}
+};
 </script>
+<style lang="scss" scoped>
+
+</style>

@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import App from './views/login/login.vue';
+import App from './views/home.vue';
 
 Vue.use(Router);
 
@@ -9,26 +9,33 @@ export default new Router({
   base: process.env.BASE_URL,
   routes: [
     {
+      path: '/entrance',
+      name: 'entrance',
+      component: () => import(/* webpackChunkName: "about" */ './views/login/entrance.vue'),
+      children: [        
+        {
+          path: '',
+          name: 'login',
+          component: () => import(/* webpackChunkName: "about" */ './views/login/login.vue'),
+        },
+        {
+          // 当 /user/:id/profile 匹配成功，
+          // UserProfile 会被渲染在 User 的 <router-view> 中
+          path: '/register',
+          name: 'register',
+          component: () => import(/* webpackChunkName: "about" */ './views/login/register.vue'),
+        },
+        {
+          path: '/retrieve',
+          name: 'retrieve',
+          component: () => import(/* webpackChunkName: "about" */ './views/login/retrieve.vue'),
+        }
+      ]
+    },
+    {
       path: '/',
       name: 'App',
-      component: App,
-    },
-    {
-      path: '/idnex',
-      name: 'App',
-      component: () => import(/* webpackChunkName: "about" */ './App.vue'),
-    },{
-      path: '/register',
-      name: 'register',
-      component: () => import(/* webpackChunkName: "about" */ './views/login/register.vue'),
-    },
-    {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue'),
+      component:App,
     },
   ],
 });
