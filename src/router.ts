@@ -17,6 +17,10 @@ export default new Router({
       path: '/idnex',
       name: 'App',
       component: () => import(/* webpackChunkName: "about" */ './App.vue'),
+    },{
+      path: '/register',
+      name: 'register',
+      component: () => import(/* webpackChunkName: "about" */ './views/login/register.vue'),
     },
     {
       path: '/about',
