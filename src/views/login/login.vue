@@ -2,12 +2,12 @@
  <div id="login">
     <Layout class="layout-content">
         <Header class="login-top">
-            <Col span="12" align="left"> 
-                <span class="iconfont icon-fanhui fanhui"></span>
-            </Col>
-            <Col span="12" align="right">
-                <span>注册</span>
-            </Col>
+                <Col span="12" align="left"> 
+                    <span class="iconfont icon-fanhui fanhui"></span>
+                </Col>
+                <Col span="12" align="right">
+                    <span>注册</span>
+                </Col>
         </Header>
         <Content class="login-center">
             
@@ -33,7 +33,7 @@ export default {
 <style lang="scss" scope="scope">
 @import "./../../assets/fonts/iconfont.css";
 .layout-content{
-    height: 100%; padding: 64px 0 0; box-sizing: border-box ; position: relative; 
+    height: 100%;  box-sizing: border-box ; position: relative; 
 }
 .ivu-layout-header{
     padding: 0 20px !important;
@@ -44,7 +44,7 @@ export default {
   height: 100%;
   background-color: #ffffff;
   .login-top {      
-    background-color: #ffffff;
+    background-color: transparent;
     position: absolute; top: 0 ; left: 0 ; width: 100%;
   }
   .login-center {
