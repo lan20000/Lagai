@@ -5,6 +5,8 @@ let cors = require('koa-cors');
 // 引入modejs的文件系统API
 let fs = require('fs');
 
+import './../../src/API/app.ts'
+
 const app = new Koa();
 const router = new Router();
 
