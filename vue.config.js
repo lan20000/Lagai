@@ -30,11 +30,11 @@ module.exports = {
     //关闭严格模式
     lintOnSave: false,
     //webpack配置
-    // configureWebpack: {
-    //     plugins: [
-            
-    //     ]
-    // }
+    configureWebpack: {
+        plugins: [
+            // new webpack.HotModuleReplacementPlugin() 
+        ]
+    },
     // 第三方插件的选项
     pluginOptions:{
         "plugins": [["import", {

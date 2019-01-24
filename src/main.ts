@@ -16,7 +16,10 @@ import 'iview/dist/styles/iview.css';
 //公共css文件
 import './assets/css/public.css';
 
-
+//redis启动
+// import './../redis/api.ts';
+//db启动
+// import './../db/config.ts';
 Vue.config.productionTip = false;
 
 Vue.use(iView, {
