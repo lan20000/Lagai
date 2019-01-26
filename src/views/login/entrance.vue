@@ -1,8 +1,6 @@
 <template>
-    <div class="body">
-        
-        <router-view></router-view>
-    
+    <div class="body">        
+        <router-view class="body-content"></router-view>
     </div>
 </template>
 
@@ -11,25 +9,19 @@ export default {
   data() {
     return {};
   },
-  components: {
-
-  }
+  components: {}
 };
 </script>
 
-<style lang="scss" scope="scope">
+<style lang="scss" scoped>
 @import "./../../assets/fonts/iconfont.css";
-  .body{
-    height: 100%;
-    color: #54596c;
-    background-color: #252b3b !important;
-  }
+.body-content{
   .ivu-layout,
   .ivu-layout-footer,
-  .ivu-layout-header{
-      background-color: transparent;
+  .ivu-layout-header {
+    background-color: transparent;
   }
-  .ivu-layout-footer{
+  .ivu-layout-footer {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -37,4 +29,26 @@ export default {
   .ivu-layout-header {
     padding: 0 20px !important;
   }
+  /**/
+  ::-webkit-input-placeholder {
+    text-align: right;
+  } /* 使用webkit内核的浏览器 */
+  :-moz-placeholder {
+    text-align: right;
+  } /* Firefox版本4-18 */
+  ::-moz-placeholder {
+    text-align: right;
+  } /* Firefox版本19+ */
+  :-ms-input-placeholder {
+    text-align: right;
+  } /* IE浏览器 */
+  
+}
+.Header {
+  background-color: transparent;
+}
+.body {
+  height: 100%;
+  color: #54596c;
+}
 </style>
