@@ -1,12 +1,31 @@
 <template>
  <div id="login">
-    <!-- <div class="">
-
-    </div> -->
-    <Layout class="layout-content">
+    <!-- 启动动画 -->
+    <div class="Start-animation" v-show="Startam" >     
+       <transition
+          name="Startam"
+          enter-active-class="animated flip"
+          leave-active-class="animated rollOut"
+          v-on:before-enter="beforeEnter"
+          v-on:enter="enter"
+          v-on:leave="leave"
+          v-on:after-leave="afterLeave"
+          v-on:leave-cancelled="leaveCancelled"
+        >
+        <img src="./../../assets/am.png" v-if="Start" />
+      </transition>
+      <!-- 登录/注册 -->
+      <div class="Start-option">
+          <span @click="Start=false,Starts()" :style="{color:( Start==false ? '#3b3334' : '')}">登录</span>
+          <span>|</span>
+          <span><router-link to="register" style="color:#c2c2c2;">注册</router-link></span>
+      </div>
+    </div>
+    <!-- END 启动动画 -->
+    <Layout class="layout-content" v-show="Start == false">
         <Header class="login-top">
                 <Col span="12" align="left"> 
-                    <span class="iconfont icon-fanhui fanhui" @click="$router.go(-1);"></span>
+                    <span class="iconfont icon-fanhui fanhui" @click="Start=true,Startam=true" ></span>
                 </Col>
                 <Col span="12" align="right">
                    <router-link to="retrieve" class="iconfont icon-mima "></router-link>
@@ -32,9 +51,8 @@
                 <input type="password" placeholder="请输入密码..." @blur="userpass(0)" @focus="userpass(1)" v-model="user.pass"/>
             </div>
             <button class="login" @click.stop="">登录</button>
-            <!-- <p>青春永不停息...</p> -->
             <Col span="24" align="right" class="forget">
-                <!-- <router-link to="retrieve" style="color:#595f77;">忘记了密码？</router-link> -->
+                <router-link to="retrieve" style="color:#595f77;">忘记了密码？</router-link>
             </Col>
         </Content>
         <Footer class="login-footer">
@@ -54,7 +72,9 @@ export default {
         pass: null //用户密码
       }, //用户对象
       ampass: false, //输入密码动画判断
-      amname: false //输入名称动画判断
+      amname: false, //输入名称动画判断
+      Start: false, //开启动画
+      Startam: true//动画容器
     };
   },
   watch: {
@@ -73,6 +93,36 @@ export default {
     }
   },
   methods: {
+    // --------
+    // 进入中
+    // --------
+    Starts(){
+      var _this = this;
+      setTimeout(function(){
+        _this.Startam=false;
+      },500)
+    },
+    beforeEnter: function(el) {
+      console.log(el);
+    },
+    // 当与 CSS 结合使用时
+    // 回调函数 done 是可选的
+    enter: function(el, done) { 
+    },
+    // 当与 CSS 结合使用时
+    // 回调函数 done 是可选的
+    leave: function(el, done) {      
+      console.log(el);
+    },
+    afterLeave: function(el) {
+      console.log(el);
+      // ...
+    },
+    // leaveCancelled 只用于 v-show 中
+    leaveCancelled: function(el) {
+      // ...
+      console.log(el);
+    },
     //登录按钮处理
     loginbt() {},
     //用户姓名处理
@@ -96,13 +146,43 @@ export default {
       console.log(this.ampass);
     }
   },
-  components: {}
+  components: {},
+  mounted() {
+    this.Start = true;
+  }
 };
 </script>
 
 <style lang="scss" scoped>
 @import "./../../assets/public/animate.css";
 
+.Start-option{
+  width: 100%;
+  display: flex;
+  color: #c2c2c2;
+  span{
+    flex: 1;
+  }
+  span:last-child{
+    text-align: left;
+  }
+  span:first-child{
+    text-align: right;
+  }
+}
+
+.Start-animation {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  img {
+    width: 4.8rem;
+    height: 4.8rem;
+  }
+}
 .logo-img {
   width: 100%;
   display: flex;
@@ -123,10 +203,10 @@ export default {
   border: none;
   // background-color: #312e3f;
   border-radius: 0.75rem;
-  border: #8a8386 solid 1px;
+  border: #3a3334 solid 1px;
   align-items: center;
   justify-content: center;
-  color: #54596c;
+  color: #3a3334;
 }
 
 .user-img-config {
@@ -158,7 +238,7 @@ export default {
 }
 
 .iconfont {
-  color: #54596c;
+  color: #3a3334;
 }
 #login {
   height: 100%;
@@ -189,13 +269,13 @@ export default {
       align-items: center;
       justify-content: center;
       input {
-        color: #54596c;
+        color: #3a3334;
         padding-left: 0.24rem;
         width: 100%;
         height: 0.68rem;
       }
       span {
-        color: #54596c;
+        color: #3a3334;
       }
     }
   }
