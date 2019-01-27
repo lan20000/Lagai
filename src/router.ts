@@ -4,6 +4,7 @@ import App from './views/home.vue';
 
 Vue.use(Router);
 
+
 export default new Router({
   mode: 'history',
   base: process.env.BASE_URL,
@@ -29,6 +30,18 @@ export default new Router({
           path: '/retrieve',
           name: 'retrieve',
           component: () => import(/* webpackChunkName: "about" */ './views/login/retrieve.vue'),
+        }
+      ]
+    },
+    {
+      path: '/serviceCenter',
+      name: 'serviceCenter',
+      component: () => import(/* webpackChunkName: "about" */ './views/serviceCenter/service.vue'),
+      children: [        
+        {
+          path: '',
+          name: 'issueList',
+          component: () => import(/* webpackChunkName: "about" */ './views/serviceCenter/issue/issueList.vue'),
         }
       ]
     },

@@ -1,48 +1,77 @@
 <template>
  <div id="login">
     <!-- 启动动画 -->
-    <div class="Start-animation" v-show="Startam" >     
-       <transition
-          name="Startam"
-          enter-active-class="animated flip"
-          leave-active-class="animated rollOut"
-          v-on:before-enter="beforeEnter"
-          v-on:enter="enter"
-          v-on:leave="leave"
-          v-on:after-leave="afterLeave"
-          v-on:leave-cancelled="leaveCancelled"
-        >
-        <img src="./../../assets/am.png" v-if="Start" />
-      </transition>
-      <!-- 登录/注册 -->
-      <div class="Start-option">
-          <span @click="Start=false,Starts()" :style="{color:( Start==false ? '#3b3334' : '')}">登录</span>
-          <span>|</span>
-          <span><router-link to="register" style="color:#c2c2c2;">注册</router-link></span>
-      </div>
-    </div>
+     <Layout v-show="Startam" >  
+      <!-- 返回 -->
+      <Header>
+        <Col span="8" class="text-left">
+         <span class="iconfont icon-fanhui" @click="$router.go(-1);"></span>
+        </Col>
+        <Col span="8"></Col>
+        <Col span="8"></Col>        
+      </Header>
+      <Content class="Start-animation">
+        <!-- logo动画 -->
+        <transition
+            name="Startam-logo"
+            enter-active-class="animated flip"
+            leave-active-class="animated fadeOutUp" 
+          >
+          <img src="./../../assets/am.png" v-if="Start" />
+        </transition>
+        <!-- 登录/注册 -->
+        <transition
+            name="Startam-option"
+            enter-active-class="animated bounceInUp"
+            leave-active-class="animated fadeOutDown"
+            v-on:leave="leave"
+        >      
+          <div class="Start-option" v-if="Start">
+              <span @click="Start=false" :style="{color:( Start==false ? '#3b3334' : '')}">登录</span>
+              <span>|</span>
+              <span><router-link to="register" style="color:#c2c2c2;">注册</router-link></span>
+          </div>
+        </transition>
+        <!-- 帮助 -->
+        <Poptip placement="top" class="wen" v-if="Start" >     
+          <div class="wen-content" slot="content">
+            <span>有什么可以帮助你的吗？</span><br />         
+            <router-link to="serviceCenter" @click="Start=true,Startam=true">→</router-link>
+          </div>           
+          <span class="iconfont icon-xunwen"></span>
+        </Poptip>
+      </Content>
+    </Layout>      
     <!-- END 启动动画 -->
-    <Layout class="layout-content" v-show="Start == false">
+    <Layout class="layout-content" v-show="Startam == false">
         <Header class="login-top">
                 <Col span="12" align="left"> 
-                    <span class="iconfont icon-fanhui fanhui" @click="Start=true,Startam=true" ></span>
+                    <span class="iconfont icon-fanhui" @click="Start=true,Startam=true" ></span>
                 </Col>
                 <Col span="12" align="right">
-                   <router-link to="retrieve" class="iconfont icon-mima "></router-link>
+                   <router-link to="retrieve" class="iconfont icon-mima " @click="Start=true,Startam=true"></router-link>
                 </Col>
         </Header>
-        <Content class="login-center">             
+        <Content class="login-center">                 
             <div class="user-img-config">
                 <transition
                     name="custom-classes-transition"
                     enter-active-class="animated rollIn"
                     leave-active-class="animated rollOut"
                 >
-                    <div class="user-img" v-show="userimg"></div>
+                    <div class="user-img" v-show="userimg">
+                      <img src="./../../assets/bg.png" />
+                    </div>
                 </transition>                
             </div>
             <div class="i-name" :class="amname ? 'animated zoomIn' : '' ">
-                <span class="iconfont icon-yonghu" v-if="amname==false"></span>
+                <transition
+                    name="Startam-option"
+                    enter-active-class="animated bounceInUp"
+                    leave-active-class="animated fadeOutDown"
+                    @leave="leave"
+                > 
+                  <span class="iconfont icon-yonghu" v-if="amname==false"></span>
                 </transition>
                 <input type="text" placeholder="请输入用户名或者邮箱..." @blur="username(0)" @focus="username(1)" v-model="user.name" />
             </div>
@@ -50,12 +79,25 @@
                 <span class="iconfont icon-tubiao202" v-if="ampass==false"></span>
                 <input type="password" placeholder="请输入密码..." @blur="userpass(0)" @focus="userpass(1)" v-model="user.pass"/>
             </div>
-            <button class="login" @click.stop="">登录</button>
-            <Col span="24" align="right" class="forget">
-                <router-link to="retrieve" style="color:#595f77;">忘记了密码？</router-link>
-            </Col>
+            <button :class="ilogin ? 'may' : ''"  class="login" @click.stop="loginfn" v-show="succeed==false" >登录</button>
+            <transition
+                name="Startam-succeed"
+                leave-active-class="animated bounceOutDown" 
+            > 
+                <div class="L3" v-if="succeed"> 
+                  <span class="iconfont icon-hook-w" v-show="success"></span>
+                  <span class="iconfont icon-guanbi1" v-show="success==false"></span>
+                  <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 0 0" xml:space="preserve">
+                      <circle fill="none" stroke="#3b3334" stroke-width="4" cx="50" cy="50" r="44" style="opacity:0.5;"></circle>
+                      <circle fill="#3b3334" stroke="#3b3334" stroke-width="3" cx="8" cy="54" r="6" transform="rotate(69.0451 50 48.7672)">
+                        <animateTransform attributeName="transform" dur="2s" type="rotate" from="0 50 48" to="360 50 52" repeatCount="indefinite"></animateTransform>
+                      </circle>
+                      <circle fill="none" stroke="#3b3334" stroke-width="4" cx="50" cy="50" r="44" style="opacity:0.5;"></circle>
+                  </svg>
+                </div>
+            </transition>
         </Content>
-        <Footer class="login-footer">
+        <Footer class="login-footer">          
             您还没有注册？ <router-link to="register" style="color:#595f77;">注册用户</router-link>
         </Footer>
     </Layout>
@@ -74,54 +116,58 @@ export default {
       ampass: false, //输入密码动画判断
       amname: false, //输入名称动画判断
       Start: false, //开启动画
-      Startam: true//动画容器
+      Startam: true, //动画容器
+      ilogin: false, //是否允许登录
+      succeed: false, //是否登录正在登录
+      success: 3//登录成功成功回调参数
     };
   },
   watch: {
     "user.name"() {
       if (this.user.name == "" || this.user.name == null) {
         this.amname = false;
-        console.log(this.user.name);
         return;
-      } //用户账户为空
+      } //账号为空
+      this.mylogin();
     },
     "user.pass"() {
       if (this.user.pass == "" || this.user.pass == null) {
         this.ampass = false;
         return;
-      } //用户账户为空
+      } //密码为空
+      this.mylogin();
     }
   },
   methods: {
-    // --------
-    // 进入中
-    // --------
-    Starts(){
+    //登录验证
+    mylogin() {
+      if (
+        this.user.name != "" &&
+        this.user.name != null &&
+        this.user.pass != "" &&
+        this.user.pass != null
+      ) {
+        this.ilogin = true;
+        return;
+      }
+      this.ilogin = false;
+    },
+    //登录处理
+    loginfn() {
       var _this = this;
-      setTimeout(function(){
-        _this.Startam=false;
-      },500)
+      if (this.ilogin) {
+        this.succeed = true;
+        this.$Message.success('登录成功');
+      }
     },
-    beforeEnter: function(el) {
-      console.log(el);
-    },
-    // 当与 CSS 结合使用时
-    // 回调函数 done 是可选的
-    enter: function(el, done) { 
-    },
-    // 当与 CSS 结合使用时
-    // 回调函数 done 是可选的
-    leave: function(el, done) {      
-      console.log(el);
-    },
-    afterLeave: function(el) {
-      console.log(el);
-      // ...
-    },
-    // leaveCancelled 只用于 v-show 中
-    leaveCancelled: function(el) {
-      // ...
-      console.log(el);
+    //关闭
+    leave(el, done) {
+      var _this = this;
+      this.$Loading.finish();
+      _this.Start = false;
+      setTimeout(function() {
+        _this.Startam = false;
+      }, 600);
     },
     //登录按钮处理
     loginbt() {},
@@ -136,14 +182,11 @@ export default {
     },
     //用户密码处理
     userpass(key) {
-      console.log(this.ampass);
-      console.log(this.user.pass);
       if (this.user.pass == "" || this.user.pass == null) {
         this.ampass = false;
         return;
       } //用户账户为空
       if (key != 1) this.ampass = true;
-      console.log(this.ampass);
     }
   },
   components: {},
@@ -156,24 +199,11 @@ export default {
 <style lang="scss" scoped>
 @import "./../../assets/public/animate.css";
 
-.Start-option{
-  width: 100%;
-  display: flex;
-  color: #c2c2c2;
-  span{
-    flex: 1;
-  }
-  span:last-child{
-    text-align: left;
-  }
-  span:first-child{
-    text-align: right;
-  }
-}
-
 .Start-animation {
-  height: 100%;
+  position: absolute;
+  height: 90%;
   width: 100%;
+  top: 10%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -183,6 +213,51 @@ export default {
     height: 4.8rem;
   }
 }
+.L3 {
+  width: 0.68rem;
+  height: 0.68rem;
+  position: relative;
+}
+.icon-hook-w,
+.icon-guanbi1{
+  position: absolute;
+  top: 0.12rem;
+  left: 0.21rem;
+  z-index: 999;
+}
+.wen {
+  position: fixed;
+  bottom: 0rem;
+  margin: 1rem 0rem;
+}
+.ivu-layout-header {
+  border: none !important;
+}
+
+.may {
+  color: #ffffff !important;
+  background: #3b3334;
+}
+
+.wen-content {
+  text-align: center;
+}
+
+.Start-option {
+  width: 100%;
+  display: flex;
+  color: #c2c2c2;
+  span {
+    flex: 1;
+  }
+  span:last-child {
+    text-align: left;
+  }
+  span:first-child {
+    text-align: right;
+  }
+}
+
 .logo-img {
   width: 100%;
   display: flex;
@@ -196,8 +271,8 @@ export default {
 }
 
 .login {
-  width: 1.5rem;
-  height: 0.44rem;
+  width: 1.68rem;
+  height: 0.48rem;
   display: flex;
   margin-top: 0.32rem;
   border: none;
@@ -219,12 +294,14 @@ export default {
   border-radius: 50%;
 }
 .user-img {
-  // background-color: red;
+  img {
+    height: inherit;
+    width: inherit;
+  }
   width: 1rem;
   position: absolute;
   border-radius: 50%;
   height: 1rem;
-  background-image: url("./../../assets/bg.png");
 }
 .forget {
   padding-right: 0.1rem;
@@ -268,11 +345,15 @@ export default {
       width: 68%;
       align-items: center;
       justify-content: center;
+      font-size: 0.28rem;
       input {
         color: #3a3334;
         padding-left: 0.24rem;
-        width: 100%;
         height: 0.68rem;
+        text-align: center;
+        flex: 1;
+        height: 100%;
+        // border-bottom: #afabac solid 1px;
       }
       span {
         color: #3a3334;

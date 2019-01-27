@@ -15,7 +15,9 @@ export default {
 
 <style lang="scss" scoped>
 @import "./../../assets/fonts/iconfont.css";
+
 .body-content{
+
   .ivu-layout,
   .ivu-layout-footer,
   .ivu-layout-header {
@@ -26,9 +28,7 @@ export default {
     align-items: center;
     justify-content: center;
   }
-  .ivu-layout-header {
-    padding: 0 20px !important;
-  }
+
   /**/
   ::-webkit-input-placeholder {
     text-align: right;

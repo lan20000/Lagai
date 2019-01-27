@@ -67,19 +67,20 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .ivu-layout,
-  .ivu-layout-footer,
-  .ivu-layout-header {
-    background-color: transparent;
-  }
-  .ivu-layout-footer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .ivu-layout-header {
-    padding: 0 20px !important;
-  }
+.ivu-layout,
+.ivu-layout-footer,
+.ivu-layout-header {  
+  border: none !important;
+  background-color: transparent;
+}
+.ivu-layout-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ivu-layout-header {
+  padding: 0 20px !important;
+}
 .login {
   width: 1.5rem;
   height: 0.44rem;

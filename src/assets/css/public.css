@@ -21,3 +21,30 @@ a,button,input,textarea{
 }
 /*input type=number*/
 input::-webkit-outer-spin-button, input::-webkit-inner-spin-button{-webkit-appearance:none !important;}/* chrome and safari */
+
+
+/* .body{
+  padding: 0 20px !important;
+} */
+
+.text-left{
+  text-align: left;
+}
+
+
+/* ivu覆盖样式 */
+.ivu-layout,
+.ivu-layout-footer,
+.ivu-layout-header {
+  background-color: transparent;
+}
+
+.ivu-layout-header {
+  padding: 0 0.2rem !important;
+  height: 0.88rem;
+  line-height:0.88rem;
+  border-bottom: #d0cbcd solid 1px;
+}
+.ivu-layout-content{
+  padding: 0 0.2rem !important;
+}
