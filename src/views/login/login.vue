@@ -16,8 +16,8 @@
             name="Startam-logo"
             enter-active-class="animated flip"
             leave-active-class="animated fadeOutUp" 
-          >
-          <img src="./../../assets/am.png" v-if="Start" />
+        >
+          <img src="./../../assets/logo.png" v-if="Start" />
         </transition>
         <!-- 登录/注册 -->
         <transition
@@ -26,11 +26,11 @@
             leave-active-class="animated fadeOutDown"
             v-on:leave="leave"
         >      
-          <div class="Start-option" v-if="Start">
-              <span @click="Start=false" :style="{color:( Start==false ? '#3b3334' : '')}">登录</span>
-              <span>|</span>
-              <span><router-link to="register" style="color:#c2c2c2;">注册</router-link></span>
-          </div>
+        <div class="Start-option" v-if="Start">
+          <span @click="Start=false" :style="{color:( Start==false ? '#3b3334' : '')}">登录</span>
+          <span>|</span>
+          <span><router-link to="register" style="color:#c2c2c2;">注册</router-link></span>
+        </div>
         </transition>
         <!-- 帮助 -->
         <Poptip placement="top" class="wen" v-if="Start" >     
@@ -52,7 +52,11 @@
                    <router-link to="retrieve" class="iconfont icon-mima " @click="Start=true,Startam=true"></router-link>
                 </Col>
         </Header>
-        <Content class="login-center">                 
+        <Content class="login-center">         
+            <div class="img-logo">
+              <img src="./../../assets/logo.png" />
+            </div> 
+            <!-- 头像 -->       
             <div class="user-img-config">
                 <transition
                     name="custom-classes-transition"
@@ -64,6 +68,7 @@
                     </div>
                 </transition>                
             </div>
+            <!-- END头像 -->
             <div class="i-name" :class="amname ? 'animated zoomIn' : '' ">
                 <transition
                     name="Startam-option"
@@ -119,7 +124,7 @@ export default {
       Startam: true, //动画容器
       ilogin: false, //是否允许登录
       succeed: false, //是否登录正在登录
-      success: 3//登录成功成功回调参数
+      success: 3 //登录成功成功回调参数
     };
   },
   watch: {
@@ -157,7 +162,7 @@ export default {
       var _this = this;
       if (this.ilogin) {
         this.succeed = true;
-        this.$Message.success('登录成功');
+        this.$Message.success("登录成功");
       }
     },
     //关闭
@@ -199,6 +204,21 @@ export default {
 <style lang="scss" scoped>
 @import "./../../assets/public/animate.css";
 
+.img-logo {
+  width: 2.67rem;
+  height: 2.55rem;
+  img {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.maotou{
+  position: relative;
+  width: 0.4rem !important;
+  height: 0.46rem !important;
+}
+
 .Start-animation {
   position: absolute;
   height: 90%;
@@ -209,8 +229,9 @@ export default {
   justify-content: center;
   flex-direction: column;
   img {
-    width: 4.8rem;
-    height: 4.8rem;
+    margin: 20% auto;
+    width: 2.57rem;
+    height: 2.45rem;
   }
 }
 .L3 {
@@ -219,7 +240,7 @@ export default {
   position: relative;
 }
 .icon-hook-w,
-.icon-guanbi1{
+.icon-guanbi1 {
   position: absolute;
   top: 0.12rem;
   left: 0.21rem;
