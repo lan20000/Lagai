@@ -41,12 +41,12 @@
                     <div class="user-img" v-show="userimg"></div>
                 </transition>                
             </div>
-            <div class="i-name" :class="amname ? 'animated rubberBand' : '' ">
+            <div class="i-name" :class="amname ? 'animated zoomIn' : '' ">
                 <span class="iconfont icon-yonghu" v-if="amname==false"></span>
                 </transition>
                 <input type="text" placeholder="请输入用户名或者邮箱..." @blur="username(0)" @focus="username(1)" v-model="user.name" />
             </div>
-            <div class="i-pass" :class="ampass ? 'animated rubberBand' : '' ">
+            <div class="i-pass" :class="ampass ? 'animated zoomIn' : '' ">
                 <span class="iconfont icon-tubiao202" v-if="ampass==false"></span>
                 <input type="password" placeholder="请输入密码..." @blur="userpass(0)" @focus="userpass(1)" v-model="user.pass"/>
             </div>
