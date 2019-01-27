@@ -52,7 +52,8 @@
                    <router-link to="retrieve" class="iconfont icon-mima " @click="Start=true,Startam=true"></router-link>
                 </Col>
         </Header>
-        <Content class="login-center">         
+        <Content class="login-center">   
+            <!-- logo -->     
             <div class="img-logo">
               <img src="./../../assets/logo.png" />
             </div> 
@@ -68,21 +69,34 @@
                     </div>
                 </transition>                
             </div>
-            <!-- END头像 -->
-            <div class="i-name" :class="amname ? 'animated zoomIn' : '' ">
-                <transition
-                    name="Startam-option"
-                    enter-active-class="animated bounceInUp"
-                    leave-active-class="animated fadeOutDown"
-                    @leave="leave"
-                > 
+            <!-- 偷看的老鹰 -->
+            <div class="login-owl-Content">
+              <div id="login-owl-head" :class="owl==1 ? 'inputPassword' :'' ">
+                <div class="owl-patch" ></div>              
+                <div class="owl-left" ></div>              
+                <div class="owl-right" ></div>
+                <div class="owl-esto-left" ></div>
+                <div class="owl-esto-right" ></div>
+              </div>   
+            </div>            
+            <!-- input -->    
+            <div class="login-input"> 
+              <!-- 输入用户名 -->           
+              <div class="i-name" :class="amname ? 'animated zoomIn' : '' ">                   
                   <span class="iconfont icon-yonghu" v-if="amname==false"></span>
-                </transition>
-                <input type="text" placeholder="请输入用户名或者邮箱..." @blur="username(0)" @focus="username(1)" v-model="user.name" />
-            </div>
-            <div class="i-pass" :class="ampass ? 'animated zoomIn' : '' ">
-                <span class="iconfont icon-tubiao202" v-if="ampass==false"></span>
-                <input type="password" placeholder="请输入密码..." @blur="userpass(0)" @focus="userpass(1)" v-model="user.pass"/>
+                  <div class="login-input-content">                   
+                     <input type="text" placeholder="请输入用户名或者邮箱..." @blur="username(0)" @focus="username(1)" v-model="user.name" />
+                     <Icon type="ios-close" v-if="user.name!=null&&user.name.length>1" @click.stop="user.name=''" />
+                  </div>
+              </div>
+              <!-- 输入密码 --> 
+              <div class="i-pass" :class="ampass ? 'animated zoomIn' : '' ">
+                  <span class="iconfont icon-tubiao202" v-if="ampass==false"></span>
+                  <div class="login-input-content">                   
+                    <input type="password" placeholder="请输入密码..." @blur="userpass(0)" @focus="userpass(1)" v-model="user.pass"/>
+                    <Icon type="ios-close" v-if="user.pass!=null&&user.pass.length>1" @click.stop="user.pass=''" />
+                  </div>
+              </div>             
             </div>
             <button :class="ilogin ? 'may' : ''"  class="login" @click.stop="loginfn" v-show="succeed==false" >登录</button>
             <transition
@@ -124,7 +138,8 @@ export default {
       Startam: true, //动画容器
       ilogin: false, //是否允许登录
       succeed: false, //是否登录正在登录
-      success: 3 //登录成功成功回调参数
+      success: 3, //登录成功成功回调参数
+      owl: 0 //猫头鹰遮眼判断
     };
   },
   watch: {
@@ -178,20 +193,31 @@ export default {
     loginbt() {},
     //用户姓名处理
     username(key) {
+      this.owl = 0;
       if (this.user.name == "" || this.user.name == null) {
         this.amname = false;
         return;
       } //用户账户为空
-      if (key != 1) this.amname = true;
+      //key为1为获取焦点
+      if (key != 1) {
+        this.amname = true;
+      } 
+      //头像展示和隐藏
       this.userimg ? (this.userimg = false) : (this.userimg = true);
     },
     //用户密码处理
     userpass(key) {
+      //猫头鹰遮住
+      if(key==1)this.owl = 1;
       if (this.user.pass == "" || this.user.pass == null) {
         this.ampass = false;
         return;
       } //用户账户为空
-      if (key != 1) this.ampass = true;
+      //key为1为获取焦点
+      if (key != 1) {
+        this.ampass = true;
+      }
+      this.owl = 1;
     }
   },
   components: {},
@@ -203,7 +229,172 @@ export default {
 
 <style lang="scss" scoped>
 @import "./../../assets/public/animate.css";
+/*猫头鹰*/
+.login-owl-Content{
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+}
+.inputPassword{
+  .owl-esto-left,.owl-esto-right
+  {
+    -webkit-transform: scale(1) !important;
+    -moz-transform: scale(1) !important;
+    -o-transform: scale(1) !important;
+    -ms-transform: scale(1)  !important;
+    transform: scale(1) !important;
+    background-position: 0 0  !important;
+    opacity: 1 !important;
+    filter: none !important;
+    -webkit-transition: background-position 0.3s ease-out,
+      -webkit-transform 0.3s ease-out !important;
+    -moz-transition: background-position 0.3s ease-out,
+      -moz-transform 0.3s ease-out !important;
+    -o-transition: background-position 0.3s ease-out,
+      -o-transform 0.3s ease-out !important;
+    -ms-transition: background-position 0.3s ease-out,
+      -ms-transform 0.3s ease-out !important;
+    transition: background-position 0.3s ease-out, 
+      transform 0.3s ease-out !important;
+  }
+  .owl-left,.owl-right {
+    -webkit-transform: translateX(40px) scale(0) translateY(-10px);
+    -moz-transform: translateX(40px) scale(0) translateY(-10px);
+    -o-transform: translateX(40px) scale(0) translateY(-10px);
+    -ms-transform: translateX(40px) scale(0) translateY(-10px);
+    transform: translateX(40px) scale(0) translateY(-10px);
+    opacity: 0;
+    -ms-filter: "alpha(opacity=0)";
+    filter: alpha(opacity=0);
+  }
+}
+#login-owl-head{
+  margin-left: 0.25rem;
+  $owlleft-width: 0.86rem;
+  $owlleft-height: 0.5rem;
+  $estowidth: 1.02rem;
+  $estoheight: 0.86rem;
+  width: 2.32rem;
+  height: 1.84rem;
+  top: 0.1rem;
+  background-image: url(./../../assets/images/login/tou.png);
+  background-size: 2.32rem 1.84rem;
+  position: relative;
 
+  .owl-patch {
+    position: absolute;
+    display: none;
+    width: 2.32rem;
+    height: 1.84rem;
+    background-image: url(./../../assets/images/login/patch.png);
+    background-size: 2.32rem 1.84rem;
+  }
+
+  //睁开动画
+  .owl-left {
+    position: absolute;
+    left: -0.1rem;
+    top: 1.5rem;
+    width: $owlleft-width;
+    height: $owlleft-height;
+    background-image: url(./../../assets/images/login/left.png);
+    background-size: $owlleft-width $owlleft-height;
+    -webkit-transition: 0.3s ease-out;
+    -moz-transition: 0.3s ease-out;
+    -o-transition: 0.3s ease-out;
+    -ms-transition: 0.3s ease-out;
+    transition: 0.3s ease-out;
+  }
+  .owl-right {
+    position: absolute;
+    right: -0.1rem;
+    top: 1.5rem;
+    width: $owlleft-width;
+    height: $owlleft-height;
+    background-image: url(./../../assets/images/login/right.png);
+    background-size: $owlleft-width $owlleft-height;
+    -webkit-transition: 0.3s ease-out;
+    -moz-transition: 0.3s ease-out;
+    -o-transition: 0.3s ease-out;
+    -ms-transition: 0.3s ease-out;
+    transition: 0.3s ease-out;
+  }
+
+  //遮眼动画
+  .owl-esto-left {
+    -webkit-transform: translateX(57px) scale(0.8);
+    -moz-transform: translateX(57px) scale(0.8);
+    -o-transform: translateX(57px) scale(0.8);
+    -ms-transform: translateX(57px) scale(0.8);
+    transform: translateX(57px) scale(0.8);
+    -webkit-transform-origin: 0 40px;
+    -moz-transform-origin: 0 40px;
+    -o-transform-origin: 0 40px;
+    -ms-transform-origin: 0 40px;
+    transform-origin: 0 40px;
+    -webkit-transition: background-position 0.3s ease-out,
+      -webkit-transform 0.3s ease-out, opacity 0s linear 0.3s;
+    -moz-transition: background-position 0.3s ease-out,
+      -moz-transform 0.3s ease-out, opacity 0s linear 0.3s;
+    -o-transition: background-position 0.3s ease-out, -o-transform 0.3s ease-out,
+      opacity 0s linear 0.3s;
+    -ms-transition: background-position 0.3s ease-out,
+      -ms-transform 0.3s ease-out, opacity 0s linear 0.3s;
+    transition: background-position 0.3s ease-out, transform 0.3s ease-out,
+      opacity 0s linear 0.3s;
+    background-position: 0 25px;
+    background-repeat: no-repeat;
+    opacity: 0;
+    -ms-filter: "alpha(opacity=0)";
+    filter: alpha(opacity=0);
+  }
+  .owl-esto-right {
+    -webkit-transform: translateX(-34px) scale(0.8);
+    -moz-transform: translateX(-34px) scale(0.8);
+    -o-transform: translateX(-34px) scale(0.8);
+    -ms-transform: translateX(-34px) scale(0.8);
+    transform: translateX(-34px) scale(0.8);
+    -webkit-transform-origin: 0 40px;
+    -moz-transform-origin: 0 40px;
+    -o-transform-origin: 0 40px;
+    -ms-transform-origin: 0 40px;
+    transform-origin: 0 40px;
+    -webkit-transition: background-position 0.3s ease-out,
+      -webkit-transform 0.3s ease-out, opacity 0s linear 0.3s;
+    -moz-transition: background-position 0.3s ease-out,
+      -moz-transform 0.3s ease-out, opacity 0s linear 0.3s;
+    -o-transition: background-position 0.3s ease-out, -o-transform 0.3s ease-out,
+      opacity 0s linear 0.3s;
+    -ms-transition: background-position 0.3s ease-out,
+      -ms-transform 0.3s ease-out, opacity 0s linear 0.3s;
+    transition: background-position 0.3s ease-out, transform 0.3s ease-out,
+      opacity 0s linear 0.3s;
+    background-position: 0 25px;
+    background-repeat: no-repeat;
+    opacity: 0;
+    -ms-filter: "alpha(opacity=0)";
+    filter: alpha(opacity=0);
+  }
+  .owl-esto-left {
+    left: -0.15rem;
+    top: 0.99rem;
+    position: absolute;
+    width: $estowidth;
+    height: $estoheight;
+    background-image: url(./../../assets/images/login/esto-left.png);
+    background-size: $estowidth $estoheight;
+  }
+  .owl-esto-right {
+    position: absolute;
+    right: 0rem;
+    top: 0.99rem;
+    width: $estowidth;
+    height: $estoheight;
+    background-image: url(./../../assets/images/login/esto-right.png);
+    background-size: $estowidth $estoheight;
+  }
+}
+/* logo */
 .img-logo {
   width: 2.67rem;
   height: 2.55rem;
@@ -212,8 +403,18 @@ export default {
     width: 100%;
   }
 }
+.login-input {
+  caret-color: #62ccf4;
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 0.1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
-.maotou{
+.maotou {
   position: relative;
   width: 0.4rem !important;
   height: 0.46rem !important;
@@ -237,6 +438,7 @@ export default {
 .L3 {
   width: 0.68rem;
   height: 0.68rem;
+  margin: 0.2rem 0rem;
   position: relative;
 }
 .icon-hook-w,
@@ -295,9 +497,8 @@ export default {
   width: 1.68rem;
   height: 0.48rem;
   display: flex;
-  margin-top: 0.32rem;
+  margin: 0.35rem auto;
   border: none;
-  // background-color: #312e3f;
   border-radius: 0.75rem;
   border: #3a3334 solid 1px;
   align-items: center;
@@ -340,7 +541,7 @@ export default {
 }
 #login {
   height: 100%;
-  background-color: #ffffff;
+  width: 100%;
   .login-top {
     background-color: transparent;
     position: absolute;
@@ -355,18 +556,15 @@ export default {
     flex-direction: column;
     justify-content: center;
     height: 100%;
-
-    // background: transparent url('./../../assets/bg.png') no-repeat;
-    // background-size: cover;
     .i-name,
     .i-pass {
       height: 0.88rem;
       margin-bottom: 0.12rem;
       display: flex;
-      width: 68%;
+      width: 88%;
       align-items: center;
       justify-content: center;
-      font-size: 0.28rem;
+      font-size: 0.28rem;     
       input {
         color: #3a3334;
         padding-left: 0.24rem;
@@ -374,15 +572,25 @@ export default {
         text-align: center;
         flex: 1;
         height: 100%;
-        // border-bottom: #afabac solid 1px;
       }
-      span {
+      span {        
         color: #3a3334;
+        font-size: 0.38rem;
+        text-align: right;
+        flex: 0;
       }
     }
   }
   .login-footer {
     background-color: transparent !important;
+  }
+}
+
+.login-input-content {
+  // position: relative;
+
+  .ivu-icon-ios-close {
+    font-size: 0.58rem;
   }
 }
 </style>
