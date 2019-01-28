@@ -14,6 +14,7 @@ import 'iview/dist/styles/iview.css';
 
 //公共css文件
 import './assets/css/public.css';
+import './assets/fonts/iconfont.css';
 
 router.beforeEach((to, from, next) => {
   iView.LoadingBar.start();

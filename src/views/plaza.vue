@@ -2,9 +2,10 @@
     <Layout>
         <Header class="header">
             <Row>
-                <Col span="8">1</Col>
-                <Col span="8">1</Col>
-                <Col span="8">
+                <Col span="12" class="logo-img">
+                <img src="./../assets/logo.png">
+                </Col>
+                <Col span="12" aligin="right">
                 <span class="iconfont icon-chakantiezigengduo"></span>
                 </Col>
             </Row>
@@ -63,8 +64,20 @@ export default {
   background: transparent url("./../assets/logins.jpg") no-repeat;
   background-size: cover;
 }
-.header{
-    border: none;
-    margin-bottom: 0.2rem;
+.header {
+  border: none;
+  margin-bottom: 0.2rem;
+}
+.logo-img {
+  display: flex;
+  align-items: center;
+  height: 0.88rem !important;
+  padding-left: 0.68rem;
+  height: inherit;
+  img {
+    display: block;
+    width: 0.57rem;
+    height: 0.45rem;
+  }
 }
 </style>

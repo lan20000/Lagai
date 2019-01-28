@@ -9,14 +9,14 @@
                     <i class="iconfont icon-zhuye" :class="code==1 ? 'animated heartBeat' : ''" ></i> <br />首页
                   </a>
                 </router-link>
-              </Col>
-              <Col span="6">                  
+              </Col>   
+               <Col span="6">                  
                   <router-link to="find">
                     <a href="" class="title" @click="code=2" :class=" code==2 ? 'default' : '' ">
-                      <i class="iconfont icon-guankanyanjing " :class=" code==2 ? 'animated heartBeat' : '' "></i><br />发现
+                      <i class="iconfont icon-guankanyanjing " :class=" code==2 ? 'animated heartBeat' : '' "></i><br />故事汇
                     </a>
                   </router-link>
-              </Col>               
+              </Col>              
               <Col span="6">
                   <router-link to="news">
                     <a href="" class="title" @click="code=3" :class=" code==3 ? 'default' : ''">
