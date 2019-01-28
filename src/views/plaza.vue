@@ -1,17 +1,34 @@
 <template>
-  <div>
-      <div class="swiper-container">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide"></div>
-            <div class="swiper-slide"></div>
-            <div class="swiper-slide"></div>
-            <div class="swiper-slide"></div>
-            <div class="swiper-slide"></div>
-            <div class="swiper-slide"></div>
-        </div>
-        旅行-厨房-摄影
-       </div>
-  </div>
+    <Layout>
+        <Header class="header">
+            <Row>
+                <Col span="8">1</Col>
+                <Col span="8">1</Col>
+                <Col span="8">
+                <span class="iconfont icon-chakantiezigengduo"></span>
+                </Col>
+            </Row>
+        </Header>
+        <Content>
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"></div>
+                    <div class="swiper-slide"></div>
+                    <div class="swiper-slide"></div>
+                    <div class="swiper-slide"></div>
+                    <div class="swiper-slide"></div>
+
+                    <div class="swiper-slide"></div>
+                </div>
+            </div>
+            <Row>
+                <Col span="6">col-6</Col>
+                <Col span="6">col-6</Col>
+                <Col span="6">col-6</Col>
+                <Col span="6">col-6</Col>
+            </Row>
+        </Content>
+    </Layout>
 </template>
 
 <script>
@@ -30,20 +47,24 @@ export default {
   created() {},
   mounted() {
     var mySwiper = new Swiper(".swiper-container", {
-        slidesPerView: 3,
-        slidesPerGroup : 1,
-        spaceBetween : 10,
+      slidesPerView: 3,
+      slidesPerGroup: 1,
+      spaceBetween: 10
     });
   }
 };
 </script>
 <style lang="scss" scoped>
 @import "./../assets/fonts/iconfont.css";
-.swiper-slide{
-    width: 33.33%;
-    border-radius: 0.08rem;
-    height: 100px;
-    background: transparent url('./../assets/logins.jpg') no-repeat;
-    background-size: cover;
+.swiper-slide {
+  width: 33.33%;
+  border-radius: 0.08rem;
+  height: 100px;
+  background: transparent url("./../assets/logins.jpg") no-repeat;
+  background-size: cover;
+}
+.header{
+    border: none;
+    margin-bottom: 0.2rem;
 }
 </style>
