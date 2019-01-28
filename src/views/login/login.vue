@@ -5,7 +5,7 @@
       <!-- 返回 -->
       <Header>
         <Col span="8" class="text-left">
-         <span class="iconfont icon-fanhui" @click="$router.go(-1);"></span>
+         <span class="iconfont icon-guanbi" @click="$router.go(-1);"></span>
         </Col>
         <Col span="8"></Col>
         <Col span="8"></Col>        

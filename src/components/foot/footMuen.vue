@@ -6,7 +6,7 @@
 
 <script lang="ts"> 
 
- import {Layout} from 'vue-ydui/dist/lib.rem/layout';
+
 
  export default {
    data () {

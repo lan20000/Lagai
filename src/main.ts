@@ -4,7 +4,6 @@ import router from './router';
 import store from './store';
 import iView from 'iview';
 
-
 //YDUI自适应
 import 'vue-ydui/dist/ydui.rem.css';
 import 'vue-ydui/dist/ydui.rem.js';
