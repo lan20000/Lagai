@@ -23,12 +23,12 @@
             <Affix :offset-top="10" @on-change="titlehandle">
                 <div class="title-content">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide title-content-slide">家具测试</div>
-                        <div class="swiper-slide title-content-slide">办公测试</div>
-                        <div class="swiper-slide title-content-slide">设备</div>
-                        <div class="swiper-slide title-content-slide">电脑</div>
-                        <div class="swiper-slide title-content-slide">家具</div>
-                        <div class="swiper-slide title-content-slide">设备</div>
+                        <div class="swiper-slide title-content-slide" @click="switcher(0)">家具测试</div>
+                        <div class="swiper-slide title-content-slide" @click="switcher(1)">办公测试</div>
+                        <div class="swiper-slide title-content-slide" @click="switcher(2)">设备</div>
+                        <div class="swiper-slide title-content-slide" @click="switcher(3)">电脑</div>
+                        <div class="swiper-slide title-content-slide" @click="switcher(4)">家具</div>
+                        <div class="swiper-slide title-content-slide" @click="switcher(5)">设备</div>
                     </div>
                     <!-- <div class="swiper-scrollbar" v-show="istop"></div> -->
                 </div>
@@ -151,23 +151,25 @@ export default {
   watch: {},
   computed: {},
   methods: {
+      
+    
     titlehandle(status) {
       if (status) {
         //标题
         var mySwiper = new Swiper(".title-content", {
           slidesPerView: 1,
-          slidesPerGroup: 1,
-        //   scrollbar: {
-        //         el: '.swiper-scrollbar',
-        //         dragSize: 30,
-        //     },
+          slidesPerGroup: 1
+          //   scrollbar: {
+          //         el: '.swiper-scrollbar',
+          //         dragSize: 30,
+          //     },
         });
         return;
       }
-      console.log(status+'999')
+      console.log(status + "999");
       //标题
       var mySwiper = new Swiper(".title-content", {
-        slidesPerView: 3,
+        slidesPerView: 1,
         slidesPerGroup: 1,
         spaceBetween: 10
       });
@@ -189,9 +191,10 @@ export default {
   mounted() {
     //标题
     var mySwiper = new Swiper(".title-content", {
-      slidesPerView: 3,
+      slidesPerView: 1,
       slidesPerGroup: 1,
       spaceBetween: 10
+      //   width: window.innerWidth-20,
     });
     //类型
     var mySwiper = new Swiper(".type-content", {
@@ -217,12 +220,11 @@ export default {
 .title-content {
   overflow: hidden;
 }
-
-.title-content-slide {
-  color: #ffffff;
-  height: 0.5rem;
+.title-content .swiper-wrapper .swiper-slide-active {
+  font-size: 0.4rem;
+  height: 0.8rem;
 }
-.title-content-slide::before {
+.title-content .swiper-wrapper .swiper-slide::after {
   content: "";
   position: absolute;
   z-index: 0;
@@ -236,6 +238,27 @@ export default {
   -webkit-transform-origin: 0 0;
   transform-origin: 0 0;
 }
+.title-content .swiper-wrapper .swiper-slide-active::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  bottom: 5px;
+  width: 10%;
+  left: 45%;
+  height: 4px;
+  border-top: 4px solid #b2b2b2;
+  -webkit-transform: scaleY(0.5);
+  transform: scaleY(0.5);
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+}
+
+.title-content-slide {
+  font-size: 0.24rem;
+  color: #ffffff;
+  height: 0.5rem;
+}
+
 .type-content-slide {
   img {
     width: 1rem;

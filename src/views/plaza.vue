@@ -2,8 +2,8 @@
     <Layout>
         <Header class="header">
             <Row>
-                <Col span="12" class="logo-img">
-                <img src="./../assets/logo.png">
+                <Col span="12" class="logo-text">
+                    <span>首页</span>
                 </Col>
                 <Col span="12" aligin="right">
                 <span class="iconfont icon-chakantiezigengduo"></span>
@@ -95,13 +95,14 @@ export default {
 }
 .header {
   border: none;
-  margin-bottom: 0.2rem;
 }
-.logo-img {
+.logo-text {
   display: flex;
-  align-items: center;
-  height: 0.88rem !important;
-  padding-left: 0.68rem;
+  align-items: left;
+  font-size: 0.32rem;
+  font-family: 'Gill Sans';
+  font-weight: 550;
+  padding-left: 0.12rem;
   height: inherit;
   img {
     display: block;
@@ -112,7 +113,10 @@ export default {
 
 .menu-list {
   margin: 0.2rem 0rem;
+  padding: 0.3rem 0rem;
   overflow: hidden;
+  border:#ff3f40 solid 1px;
+  border-radius: 3px;
 }
 .menu {
   display: flex;

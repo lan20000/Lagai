@@ -1,40 +1,40 @@
 <template>
- <Layout>    
-        <router-view class="body-content"></router-view> 
+    <Layout>
+        <router-view class="body-content"></router-view>
         <!-- 底部 -->
-        <Footer>      
-          <Row>
-              <Col span="6">
-                <router-link to="/" >
-                  <a href="" class="title" @click="code=1" :class=" code==1 ? 'default' : ''">
-                    <i class="iconfont icon-zhuye" :class="code==1 ? 'animated heartBeat' : ''" ></i> <br />首页
-                  </a>
+        <Footer>
+            <Row type="flex" justify="center" align="middle" style="height:100%;">
+                <Col span="6">
+                <router-link to="/">
+                    <a href="" class="title" @click="code=1" :class=" code==1 ? 'default' : ''">
+                        <i class="iconfont icon-zhuye" :class="code==1 ? 'animated pulse' : ''"></i> <br />首页
+                    </a>
                 </router-link>
-              </Col>   
-               <Col span="6">                  
-                  <router-link to="find">
+                </Col>
+                <Col span="6">
+                <router-link to="find">
                     <a href="" class="title" @click="code=2" :class=" code==2 ? 'default' : '' ">
-                      <i class="iconfont icon-guankanyanjing " :class=" code==2 ? 'animated heartBeat' : '' "></i><br />故事汇
+                        <i class="iconfont icon-guankanyanjing " :class=" code==2 ? 'animated pulse' : '' "></i><br />故事汇
                     </a>
-                  </router-link>
-              </Col>              
-              <Col span="6">
-                  <router-link to="news">
+                </router-link>
+                </Col>
+                <Col span="6">
+                <router-link to="news">
                     <a href="" class="title" @click="code=3" :class=" code==3 ? 'default' : ''">
-                      <i class="iconfont icon-iconset0457" :class="code==3 ? 'animated heartBeat' : ''" ></i><br />消息
+                        <i class="iconfont icon-iconset0457" :class="code==3 ? 'animated pulse' : ''"></i><br />消息
                     </a>
-                  </router-link>
-              </Col>
-              <Col span="6">
-                  <router-link to="mine">
+                </router-link>
+                </Col>
+                <Col span="6">
+                <router-link to="mine">
                     <a href="" class="title" @click="code=4" :class=" code==4 ? 'default' : ''">
-                      <i class="iconfont icon-ziyuan" :class="code==4 ? 'animated heartBeat' : ''" ></i><br />我的
+                        <i class="iconfont icon-ziyuan" :class="code==4 ? 'animated pulse' : ''"></i><br />我的
                     </a>
-                  </router-link>
-              </Col>
-          </Row>
+                </router-link>
+                </Col>
+            </Row>
         </Footer>
-  </Layout> 
+    </Layout>
 </template>
 
 <script>
@@ -64,7 +64,7 @@ export default {
   position: fixed;
   bottom: 0rem;
   width: 100%;
-  height: 0.88rem;
+  height: 1rem;
   padding: 0rem;
   .ivu-row {
   }
@@ -105,12 +105,15 @@ export default {
 }
 .title {
   color: #333333;
-  i{
+  i {
     display: inline-block;
   }
   display: block;
 }
 .default {
-  color: #2d8cf0 !important;
+  .iconfont {
+    font-weight: 800;
+  }
+  color: #ff3f40 !important;
 }
 </style>

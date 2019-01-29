@@ -48,3 +48,8 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button{-webkit-appea
 .ivu-layout-content{
   padding: 0 0.2rem !important;
 }
+
+.badgetop{
+    box-shadow: 0 0 0 3px #fff;    
+    right: -4px;
+}
