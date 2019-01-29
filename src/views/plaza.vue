@@ -22,11 +22,40 @@
                     <div class="swiper-slide"></div>
                 </div>
             </div>
-            <Row>
-                <Col span="6">col-6</Col>
-                <Col span="6">col-6</Col>
-                <Col span="6">col-6</Col>
-                <Col span="6">col-6</Col>
+            <!-- 菜单 -->
+            <Row type="flex" class="menu-list">
+                <Col span="6" class="menu">
+                <div class="menu-content">1</div>
+                <span>房产</span>
+                </Col>
+                <Col span="6" class="menu">
+                <div class="menu-content">1</div>
+                <span>房产</span>
+                </Col>
+                <Col span="6" class="menu">
+                <div class="menu-content">1</div>
+                <span>房产</span>
+                </Col>
+                <Col span="6" class="menu">
+                <div class="menu-content">1</div>
+                <span>房产</span>
+                </Col>
+            </Row>
+            <!-- 模块 -->
+            <Row type="flex" justify="center" align="bottom" style="overflow: hidden;">
+                <Col span="10">
+                <div class="show-left-area">
+                    1
+                </div>
+                </Col>
+                <Col span="14">
+                <div class="show-right-area">
+                    2
+                </div>
+                <div class="show-right-area">
+                    3
+                </div>
+                </Col>
             </Row>
         </Content>
     </Layout>
@@ -79,5 +108,39 @@ export default {
     width: 0.57rem;
     height: 0.45rem;
   }
+}
+
+.menu-list {
+  margin: 0.2rem 0rem;
+  overflow: hidden;
+}
+.menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  span {
+    font-weight: 550;
+  }
+  .menu-content {
+    width: 0.68rem;
+    background-color: red;
+    border-radius: 10%;
+    height: 0.68rem;
+  }
+}
+.show-left-area {
+  background-color: red;
+  height: 2.8rem;
+  border-radius: 0.08rem;
+}
+.show-right-area {
+  height: 1.3rem;
+  margin: 0.2rem;
+  background-color: red;
+  border-radius: 0.08rem;
+}
+.show-right-area:last-child {
+  margin-bottom: 0rem;
 }
 </style>

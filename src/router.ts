@@ -78,6 +78,11 @@ export default new Router({
             path: '/Other',
             name: 'Other',
             component: () => import(/* webpackChunkName: "about" */ './views/Other.vue'),
+        },
+        {
+            path: '/sift',
+            name: 'sift',
+            component: () => import(/* webpackChunkName: "about" */ './views/sift.vue'),
         }
   ],
 });

@@ -1,6 +1,7 @@
 <template>
  <Layout>    
         <router-view class="body-content"></router-view> 
+        <!-- 底部 -->
         <Footer>      
           <Row>
               <Col span="6">

@@ -30,7 +30,7 @@
                         <div class="swiper-slide title-content-slide">家具</div>
                         <div class="swiper-slide title-content-slide">设备</div>
                     </div>
-                    <div class="swiper-scrollbar" v-show="istop"></div>
+                    <!-- <div class="swiper-scrollbar" v-show="istop"></div> -->
                 </div>
             </Affix>
         </div>
@@ -157,10 +157,10 @@ export default {
         var mySwiper = new Swiper(".title-content", {
           slidesPerView: 1,
           slidesPerGroup: 1,
-          scrollbar: {
-                el: '.swiper-scrollbar',
-                dragSize: 30,
-            },
+        //   scrollbar: {
+        //         el: '.swiper-scrollbar',
+        //         dragSize: 30,
+        //     },
         });
         return;
       }
