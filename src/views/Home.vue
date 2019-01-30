@@ -14,7 +14,7 @@
                 <Col span="6">
                 <router-link to="find">
                     <a href="" class="title" @click="code=2" :class=" code==2 ? 'default' : '' ">
-                        <i class="iconfont icon-guankanyanjing " :class=" code==2 ? 'animated pulse' : '' "></i><br />故事汇
+                        <i class="iconfont icon-guankanyanjing " :class=" code==2 ? 'animated pulse' : '' "></i><br />发现
                     </a>
                 </router-link>
                 </Col>
