@@ -66,6 +66,8 @@ export default {
   width: 100%;
   height: 1rem;
   padding: 0rem;
+  z-index: 999;
+  background: #ffff;
   .ivu-row {
   }
 }

@@ -83,6 +83,10 @@ export default new Router({
             path: '/sift',
             name: 'sift',
             component: () => import(/* webpackChunkName: "about" */ './views/sift.vue'),
+        },{
+            path: '/personsindex',
+            name: 'personsindex',
+            component: () => import(/* webpackChunkName: "about" */ './views/personsindex.vue'),
         }
   ],
 });

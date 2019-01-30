@@ -2,19 +2,22 @@
     <Layout style="background-color:#f5f5f5">
         <Header class="top-header">
             <Row>
-                <Col span="12" class="my-center-header">个人中心</Col>
+                <Col span="12" align="left">
+                <span class="iconfont icon-fanhui1"></span>
+                </Col>
                 <Col span="12" align="right">
-                <span class="iconfont icon-shezhi"></span>
+                <span class="iconfont icon-gengduo-tianchong"></span>
                 </Col>
             </Row>
             <div class="my-card">
                 <Row class="my-card-top">
-                    <Col span="12" align="left" class="my-basic">
+                    <Col span="12" align="left" class="my-basic-head">
                     <img src="http://img.sccnn.com//simg/338/53320.jpg" />
-                    <span>你的昵称</span>
                     </Col>
                     <Col span="12" align="right">
-                    <div class="my-entrance"></div>
+                    <div class="my-entrance">
+                        <span>关注</span>
+                    </div>
                     </Col>
                 </Row>
                 <Row>
@@ -54,12 +57,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-// .my-center-text {
-//   font-size: 0.32rem;
-//   font-weight: 550;
-// }
-.icon-shezhi {
-  font-size: 0.52rem;
+.iconfont {
   color: #ffffff;
 }
 .my-center-header {
@@ -79,13 +77,11 @@ export default {
   margin-top: 0.28rem;
 }
 .my-card {
-  top: 0.28rem;
-  height: 2.3rem;
+  top: 0.68rem;
+  height: 1.8rem;
   margin: 0rem auto;
-  position: relative;
   border-radius: 3px;
-  border-bottom-left-radius: none;
-  border-bottom-right-radius: none;
+  position: relative;
   background-color: #ffffff;
 }
 .my-card-top {
@@ -105,7 +101,7 @@ export default {
     font-weight: 550;
   }
 }
-.my-basic {
+.my-basic-head {
   display: flex;
   align-items: center;
   padding: 0.13rem;
@@ -113,16 +109,11 @@ export default {
     width: 0.68rem;
     height: 0.68rem;
     border-radius: 50%;
-  }
-  span {
-    padding-left: 0.13rem;
+    position: relative;
   }
 }
 .my-entrance {
   width: 1rem;
   height: 0.42rem;
-  border-top-left-radius: 0.22rem;
-  border-bottom-left-radius: 0.22rem;
-  background-color: #ff3f40;
 }
 </style>

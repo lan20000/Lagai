@@ -9,13 +9,18 @@
                 <span class="type-menu" @click="typecode=2" :class="typecode==2 ? 'type-menu-active' : ''">附近</span>
                 </Col>
                 <Col span="12" class="type-menu-right">
-                <span class="type-menu-sos">
-                    <input type="text" class="sos-input" placeholder="找点啥..." v-show="sos" />
-                    <i class="iconfont icon-sousuo" @click="sos ? sos=false : sos=true"></i>
-                </span>
+                <div class="type-menu-sos">
+                    <!-- @blur="issou=false" @focus="issou=true" -->
+                    <input type="text" class="sos-input" @blur="sosuo=false" @focus="sosuo=true" placeholder="找点啥..." v-show="sos" />
+                    <div>
+                        <i class="iconfont icon-sousuo" @click="sos ? sos=false : sos=true"></i>
+                        <span>取消</span>
+                    </div>
+                </div>
                 </Col>
             </Row>
         </Header>
+        <sos :issou="sosuo"></sos>
         <Content>
             <!-- 选项 -->
             <div class="findTitle">
@@ -24,49 +29,49 @@
                         <svg class="icon" aria-hidden="true" @click="switcher(0)">
                             <use xlink:href="#icon-weizhi"></use>
                         </svg>
-                        <span :class="meunCode==0 ? 'active' : ''">附近</span>
+                        <span :class="meunCode==8 ? 'active' : ''">附近</span>
                     </div>
                     <div class="swiper-slide">
                         <svg class="icon" aria-hidden="true" @click="switcher(1)">
                             <use xlink:href="#icon-shu"></use>
                         </svg>
-                        <span :class="meunCode==1 ? 'active' : ''">书汇</span>
+                        <span :class="meunCode==8 ? 'active' : ''">书汇</span>
                     </div>
                     <div class="swiper-slide">
                         <svg class="icon" aria-hidden="true" @click="switcher(2)">
                             <use xlink:href="#icon-meishi"></use>
                         </svg>
-                        <span :class="meunCode==2 ? 'active' : ''">厨房</span>
+                        <span :class="meunCode==8 ? 'active' : ''">厨房</span>
                     </div>
                     <div class="swiper-slide">
                         <svg class="icon" aria-hidden="true" @click="switcher(3)">
                             <use xlink:href="#icon-lvhang-"></use>
                         </svg>
-                        <span :class="meunCode==3 ? 'active' : ''">旅行</span>
+                        <span :class="meunCode==8 ? 'active' : ''">旅行</span>
                     </div>
                     <div class="swiper-slide">
                         <svg class="icon" aria-hidden="true" @click="switcher(4)">
                             <use xlink:href="#icon-sheyingji"></use>
                         </svg>
-                        <span :class="meunCode==4 ? 'active' : ''">艺术</span>
+                        <span :class="meunCode==8 ? 'active' : ''">艺术</span>
                     </div>
                     <div class="swiper-slide">
                         <svg class="icon" aria-hidden="true" @click="switcher(5)">
                             <use xlink:href="#icon-lvhang-"></use>
                         </svg>
-                        <span :class="meunCode==5 ? 'active' : ''">运动</span>
+                        <span :class="meunCode==8 ? 'active' : ''">运动</span>
                     </div>
                     <div class="swiper-slide">
                         <svg class="icon" aria-hidden="true" @click="switcher(6)">
                             <use xlink:href="#icon-niandugongzuogaishu"></use>
                         </svg>
-                        <span :class="meunCode==6 ? 'active' : ''">互联网</span>
+                        <span :class="meunCode==8 ? 'active' : ''">互联网</span>
                     </div>
                     <div class="swiper-slide">
                         <svg class="icon" aria-hidden="true" @click="switcher(7)">
                             <use xlink:href="#icon-renminshenghuo"></use>
                         </svg>
-                        <span :class="meunCode==7 ? 'active' : ''">生活</span>
+                        <span :class="meunCode==8 ? 'active' : ''">生活</span>
                     </div>
                 </div>
             </div>
@@ -90,8 +95,11 @@
 import Swiper from "swiper";
 import "swiper/dist/css/swiper.css";
 import "./../../assets/fonts/iconfont.js";
+import sos from "./../../components/findsos.vue";
 export default {
-  components: {},
+  components: {
+      sos
+  },
   props: {},
   data() {
     return {
@@ -99,7 +107,8 @@ export default {
       sw: null,
       meunCode: 0, //菜单下标
       typecode: 0, //类型下标
-      sos: false //搜索
+      sos: false, //搜索
+      sosuo: false //是否搜索
     };
   },
   watch: {},
@@ -107,8 +116,8 @@ export default {
   methods: {
     //切换
     switcher(status) {
-      this.meunCode = status;
-      this.sw1.slideTo(status, 1000, false);
+      //   this.meunCode = status;
+      //   this.sw1.slideTo(status, 1000, false);
     }
   },
   created() {},
@@ -198,17 +207,38 @@ export default {
 .type-menu-active {
   position: relative;
   color: #000;
-  font-weight: 500;
+  font-weight: 550;
+}
+.type-menu-right {
+  display: flex;
+  height: 0.88rem;
+  align-items: center;
+}
+.type-sos-active {
+  background-color: #ff4b67;
+  height: 0.52rem;
+  border-radius: 50%;
 }
 .type-menu-sos {
-  width: 100%;
-  .icon-sousuo {
-    color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  div {
+    height: 0.52rem;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 0.52rem;
     border-radius: 50%;
     background-color: #ff4b67;
+  }
+  .icon-sousuo {
+    color: #ffffff;
   }
 }
 .sos-input {
   // border:#b2b2b2 solid 1px;
 }
+
 </style>

@@ -47,9 +47,9 @@
             </Header>
             <Content class="login-center">
                 <!-- logo -->
-                <div class="img-logo animated pulse">
+                <!-- <div class="img-logo animated pulse">
                     <img src="./../../assets/logo.png" />
-                </div>
+                </div> -->
                 <!-- 头像 -->
                 <div class="user-img-config">
                     <transition name="custom-classes-transition" enter-active-class="animated fadeInLeft" leave-active-class="animated rollOut">

@@ -86,6 +86,7 @@ export default {
   }
   .active {
     color: #000;
+    font-weight: 550;
   }
   .active::before {
     font-size: 0.32rem;
