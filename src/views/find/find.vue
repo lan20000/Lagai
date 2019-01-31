@@ -63,13 +63,6 @@ export default {
   fill: currentColor;
   overflow: hidden;
 }
-.findTitle,
-.findContent {
-  width: 100%;
-  height: 100%;
-  margin: 0.2rem;
-  overflow: hidden;
-}
 .findTitle .swiper-wrapper .swiper-slide-active {
   display: flex;
   align-items: center;
@@ -82,6 +75,9 @@ export default {
     color: #ffffff;
     font-size: 0.28rem;
   }
+}
+.ivu-layout-content{
+    padding: 0rem !important;
 }
 // .active {
 //   margin: 0.12rem 0rem;

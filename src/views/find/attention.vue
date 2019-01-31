@@ -1,14 +1,18 @@
 <template>
     <div>
         <mescroll-vue ref="mescroll" :down="mescrollDown" :up="mescrollUp" @init="mescrollInit">
+            <div id="mescrolls"></div>
             <ul class="list-content">
                 <li v-for="i in dataList.length">
                     <Row>
-                        <Col span="12" align="left">
+                        <Col span="12" align="left" class="state-left">
                         <Avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" />
-                        <span class="user-name">瘫痪</span>
+                        <div class="">
+                            <span class="user-name">瘫痪</span>
+                            <p class="state-item">2019-01-31</p>
+                        </div>
                         </Col>
-                        <Col span="12" align="right">
+                        <Col span="12" align="right" class="state-right">
                         <span class="infuse">+</span>
                         </Col>
                     </Row>
@@ -27,7 +31,10 @@ export default {
     return {
       mescroll: null, // mescroll实例对象
       mescrollDown: {
-
+        warpId: "mescrolls",
+        auto: true,
+        bottomOffset: 20,
+        textLoading: '<p class="upwarp-nodata">正在加载中~</p>'
       }, //下拉刷新的配置. (如果下拉刷新和上拉加载处理的逻辑是一样的,则mescrollDown可不用写了)
       mescrollUp: {
         // 上拉加载的配置.
@@ -37,7 +44,7 @@ export default {
           num: 0, //当前页 默认0,回调之前会加1; 即callback(page)会从1开始
           size: 10 //每页数据条数,默认10
         },
-        htmlNodata: '<p class="upwarp-nodata">-- END --</p>',
+        htmlNodata: '<p class="upwarp-nodata">我的底线被你看到了~</p>',
         noMoreSize: 5, //如果列表已无数据,可设置列表的总数量要大于5才显示无更多数据;
         // 避免列表数据过少(比如只有一条数据),显示无更多数据会不好看
         // 这就是为什么无更多数据有时候不显示的原因
@@ -92,7 +99,7 @@ export default {
 .user-name {
   font-size: 0.28rem;
   color: #000;
-  padding-left: 0.28rem;
+  padding-left: 0.11rem;
 }
 .infuse {
   width: 1rem;
@@ -104,16 +111,27 @@ export default {
   border-radius: 0.5rem;
   background-color: #fed431;
 }
-.ivu-scroll-container {
-  height: 100px !important;
-}
-.mescroll-downwarp .downwarp-content {
-  background: #fed431;
+#mescrolls {
+  background-color: #fed431;
 }
 .mescroll {
   position: fixed;
   top: 44px;
   bottom: 1rem;
   height: auto;
+}
+.state-right {
+  justify-content: flex-end;
+}
+.state-right,
+.state-left {
+  display: flex;
+  align-items: center;
+  height: 0.78rem;
+}
+.state-item {
+  padding-left: 0.11rem;
+  font-size: 0.2rem;
+  color: gray;
 }
 </style>

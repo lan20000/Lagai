@@ -15,22 +15,22 @@
                 </Col> -->
                 <Col span="8">
                 <router-link to="/">
-                    <a href="" class="title" @click="code=1" :class=" code==1 ? 'default' : '' ">
-                        <i class="iconfont icon-guankanyanjing " :class=" code==1 ? 'animated pulse' : '' "></i><br />发现
+                    <a href="" class="title" @click="code=1">
+                        <i class="iconfont icon-guankanyanjing " :class=" code==1 ? 'animated pulse default' : '' "></i><br />发现
                     </a>
                 </router-link>
                 </Col>
                 <Col span="8">
                 <router-link to="news">
-                    <a href="" class="title" @click="code=2" :class=" code==2 ? 'default' : ''">
-                        <i class="iconfont icon-iconset0457" :class="code==2 ? 'animated pulse' : ''"></i>
+                    <a href="" class="title" @click="code=2" >
+                        <i class="iconfont icon-iconset0457" :class="code==2 ? 'animated pulse default' : ''"></i>
                     </a>
                 </router-link>
                 </Col>
                 <Col span="8">
                 <router-link to="mine">
-                    <a href="" class="title" @click="code=3" :class=" code==3 ? 'default' : ''">
-                        <i class="iconfont icon-ziyuan" :class="code==3 ? 'animated pulse' : ''"></i><br />我的
+                    <a href="" class="title" @click="code=3" >
+                        <i class="iconfont icon-ziyuan" :class="code==3 ? 'animated pulse default' : ''"></i><br />我的
                     </a>
                 </router-link>
                 </Col>
