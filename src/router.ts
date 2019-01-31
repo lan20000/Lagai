@@ -50,11 +50,11 @@ export default new Router({
             name: 'App',
             component: App,
             children: [
-                {
-                    path: '',
-                    name: 'plaza',
-                    component: () => import(/* webpackChunkName: "about" */ './views/plaza.vue'),
-                },
+                // {
+                //     path: '',
+                //     name: 'plaza',
+                //     component: () => import(/* webpackChunkName: "about" */ './views/plaza.vue'),
+                // },
                 {
                     // 当 /user/:id/profile 匹配成功，
                     // UserProfile 会被渲染在 User 的 <router-view> 中
@@ -68,9 +68,27 @@ export default new Router({
                     component: () => import(/* webpackChunkName: "about" */ './views/news/news.vue')
                 },
                 {
-                    path: '/find',
+                    path: '',
                     name: 'find',
+                    redirect: '/all',
                     component: () => import(/* webpackChunkName: "about" */ './views/find/find.vue'),
+                    children: [
+                        {
+                            path: '/all',
+                            name: 'all',
+                            component: () => import(/* webpackChunkName: "about" */ './views/find/all.vue'),
+                        },
+                        {
+                            path: '/circle',
+                            name: 'circle',
+                            component: () => import(/* webpackChunkName: "about" */ './views/find/circle.vue'),
+                        },
+                        {
+                            path: '/attention',
+                            name: 'attention',
+                            component: () => import(/* webpackChunkName: "about" */ './views/find/attention.vue'),
+                        }
+                    ]
                 }
             ]
         },
@@ -83,10 +101,18 @@ export default new Router({
             path: '/sift',
             name: 'sift',
             component: () => import(/* webpackChunkName: "about" */ './views/sift.vue'),
-        },{
+        }, {
             path: '/personsindex',
             name: 'personsindex',
             component: () => import(/* webpackChunkName: "about" */ './views/personsindex.vue'),
+        }, {
+            path: '/set',
+            name: 'set',
+            component: () => import(/* webpackChunkName: "about" */ './views/set/set.vue'),
+        }, {
+            path: '/Us',
+            name: 'Us',
+            component: () => import(/* webpackChunkName: "about" */ './views/set/AboutUs.vue'),
         }
-  ],
+    ],
 });

@@ -4,110 +4,40 @@
         <Header>
             <Row>
                 <Col span="12">
-                <span class="type-menu" @click="typecode=0" :class="typecode==0 ? 'type-menu-active' : ''">关注</span>
-                <span class="type-menu" @click="typecode=1" :class="typecode==1 ? 'type-menu-active' : ''">全部</span>
-                <span class="type-menu" @click="typecode=2" :class="typecode==2 ? 'type-menu-active' : ''">附近</span>
+                <span class="type-menu" @click="typecode=0,$router.replace('/attention')" :class="typecode==0 ? 'type-menu-active' : ''">关注</span>
+                <span class="type-menu" @click="typecode=1,$router.replace('/all')" :class="typecode==1 ? 'type-menu-active' : ''">全部</span>
+                <span class="type-menu" @click="typecode=2,$router.replace('/circle')" :class="typecode==2 ? 'type-menu-active' : ''">圈子</span>
                 </Col>
-                <Col span="12" class="type-menu-right">
+                <Col span="12"  align="right">
                 <div class="type-menu-sos">
-                    <!-- @blur="issou=false" @focus="issou=true" -->
-                    <input type="text" class="sos-input" @blur="sosuo=false" @focus="sosuo=true" placeholder="找点啥..." v-show="sos" />
-                    <div>
-                        <i class="iconfont icon-sousuo" @click="sos ? sos=false : sos=true"></i>
-                        <span>取消</span>
-                    </div>
+                    <!-- <input type="text" class="sos-input" @blur="sosuo=false" @focus="sosuo=true" placeholder="找点啥..." v-show="sos" />-->
+                    <span><i class="iconfont icon-bianji-tianxie"></i></span>
+                    <span><i class="iconfont icon-sousuo"></i></span>
                 </div>
                 </Col>
             </Row>
         </Header>
         <sos :issou="sosuo"></sos>
         <Content>
-            <!-- 选项 -->
-            <div class="findTitle">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <svg class="icon" aria-hidden="true" @click="switcher(0)">
-                            <use xlink:href="#icon-weizhi"></use>
-                        </svg>
-                        <span :class="meunCode==8 ? 'active' : ''">附近</span>
-                    </div>
-                    <div class="swiper-slide">
-                        <svg class="icon" aria-hidden="true" @click="switcher(1)">
-                            <use xlink:href="#icon-shu"></use>
-                        </svg>
-                        <span :class="meunCode==8 ? 'active' : ''">书汇</span>
-                    </div>
-                    <div class="swiper-slide">
-                        <svg class="icon" aria-hidden="true" @click="switcher(2)">
-                            <use xlink:href="#icon-meishi"></use>
-                        </svg>
-                        <span :class="meunCode==8 ? 'active' : ''">厨房</span>
-                    </div>
-                    <div class="swiper-slide">
-                        <svg class="icon" aria-hidden="true" @click="switcher(3)">
-                            <use xlink:href="#icon-lvhang-"></use>
-                        </svg>
-                        <span :class="meunCode==8 ? 'active' : ''">旅行</span>
-                    </div>
-                    <div class="swiper-slide">
-                        <svg class="icon" aria-hidden="true" @click="switcher(4)">
-                            <use xlink:href="#icon-sheyingji"></use>
-                        </svg>
-                        <span :class="meunCode==8 ? 'active' : ''">艺术</span>
-                    </div>
-                    <div class="swiper-slide">
-                        <svg class="icon" aria-hidden="true" @click="switcher(5)">
-                            <use xlink:href="#icon-lvhang-"></use>
-                        </svg>
-                        <span :class="meunCode==8 ? 'active' : ''">运动</span>
-                    </div>
-                    <div class="swiper-slide">
-                        <svg class="icon" aria-hidden="true" @click="switcher(6)">
-                            <use xlink:href="#icon-niandugongzuogaishu"></use>
-                        </svg>
-                        <span :class="meunCode==8 ? 'active' : ''">互联网</span>
-                    </div>
-                    <div class="swiper-slide">
-                        <svg class="icon" aria-hidden="true" @click="switcher(7)">
-                            <use xlink:href="#icon-renminshenghuo"></use>
-                        </svg>
-                        <span :class="meunCode==8 ? 'active' : ''">生活</span>
-                    </div>
-                </div>
-            </div>
-            <!-- 内容 -->
-            <div class="findContent">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">1</div>
-                    <div class="swiper-slide">1</div>
-                    <div class="swiper-slide">1</div>
-                    <div class="swiper-slide">1</div>
-                    <div class="swiper-slide">1</div>
-                    <div class="swiper-slide">1</div>
-                </div>
-            </div>
+            <!-- <transition name="Startam-succeed" leave-active-class="animated rollOut" > -->
+            <router-view></router-view>
+            <!-- </transition> -->
         </Content>
     </Layout>
 </template>
 
 <script>
-//swiper
-import Swiper from "swiper";
-import "swiper/dist/css/swiper.css";
 import "./../../assets/fonts/iconfont.js";
 import sos from "./../../components/findsos.vue";
 export default {
   components: {
-      sos
+    sos
   },
   props: {},
   data() {
     return {
-      sw1: null,
-      sw: null,
-      meunCode: 0, //菜单下标
-      typecode: 0, //类型下标
       sos: false, //搜索
+      typecode: 1, //全部
       sosuo: false //是否搜索
     };
   },
@@ -121,22 +51,7 @@ export default {
     }
   },
   created() {},
-  mounted() {
-    var _this = this;
-    this.sw1 = new Swiper(".findTitle", {
-      slidesPerView: 5,
-      slidesPerGroup: 1,
-      on: {
-        slideChangeTransitionEnd: function() {
-          _this.meunCode = this.activeIndex;
-        }
-      }
-    });
-    this.sw = new Swiper(".findContent", {
-      slidesPerView: 5,
-      slidesPerGroup: 1
-    });
-  }
+  mounted() {}
 };
 </script>
 <style lang="scss" scoped>
@@ -174,20 +89,21 @@ export default {
 //   color: #ffffff;
 //   font-size: 0.28rem;
 // }
-// .findTitle .swiper-wrapper .swiper-slide-active::before {
-//   content: "";
-//   position: absolute;
-//   z-index: 0;
-//   bottom: -2px;
-//   width: 20%;
-//   left: 40%;
-//   height: 4px;
-//   border-top: 4px solid #b2b2b2;
-//   -webkit-transform: scaleY(0.5);
-//   transform: scaleY(0.5);
-//   -webkit-transform-origin: 0 0;
-//   transform-origin: 0 0;
-// }
+.type-menu-active::after {
+  font-size: 0.32rem;
+  content: "";
+  position: absolute;
+  z-index: 0;
+  bottom: -0.15rem;
+  width: 40%;
+  left: 30%;
+  border-radius: 3px;
+  border-top: 6px solid #ff4b67;
+  -webkit-transform: scaleY(0.5);
+  transform: scaleY(0.5);
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+}
 .ivu-layout-header {
   border: none;
 }
@@ -220,25 +136,25 @@ export default {
   border-radius: 50%;
 }
 .type-menu-sos {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  div {
+//   display: flex;
+//   align-items: center;
+//   justify-content: flex-end;
+  span {
     height: 0.52rem;
     overflow: hidden;
-    display: flex;
+    display: inline-flex;
     align-items: center;
+    margin-right: 0.28rem;
     justify-content: center;
     width: 0.52rem;
     border-radius: 50%;
     background-color: #ff4b67;
   }
-  .icon-sousuo {
-    color: #ffffff;
+  .icon-sousuo,.icon-bianji-tianxie {
+      color: #ffffff;
   }
 }
 .sos-input {
   // border:#b2b2b2 solid 1px;
 }
-
 </style>

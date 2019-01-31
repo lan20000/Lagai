@@ -23,7 +23,7 @@
                 </div>
             </div>
             <!-- 菜单 -->
-            <Row type="flex" class="menu-list">
+            <!-- <Row type="flex" class="menu-list">
                 <Col span="6" class="menu">
                 <div class="menu-content">1</div>
                 <span>房产</span>
@@ -40,7 +40,7 @@
                 <div class="menu-content">1</div>
                 <span>房产</span>
                 </Col>
-            </Row>
+            </Row> -->
             <!-- 模块 -->
             <Row type="flex" justify="center" align="bottom" style="overflow: hidden;">
                 <Col span="10">
