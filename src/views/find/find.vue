@@ -1,6 +1,7 @@
 <template>
     <Layout>
         <!-- 功能块 -->
+        <Affix>
         <Header>
             <Row>
                 <Col span="12">
@@ -17,6 +18,7 @@
                 </Col>
             </Row>
         </Header>
+        </Affix>
         <sos :issou="sosuo"></sos>
         <Content>
             <!-- <transition name="Startam-succeed" leave-active-class="animated rollOut" > -->
@@ -105,6 +107,7 @@ export default {
   transform-origin: 0 0;
 }
 .ivu-layout-header {
+  background-color: #ffffff;
   border: none;
 }
 .swiper-slide {

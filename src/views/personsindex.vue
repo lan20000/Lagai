@@ -17,8 +17,12 @@
                         <Avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" class="head-portrait" />
                         <span class="my-screen">鸵鸟蛋
                             <sup>LV7
-                                <i class="iconfont icon-gengduo-tianchong"></i>
+                                <!-- <i class="iconfont icon-gengduo-tianchong"></i> -->
+
                             </sup>
+                            <svg class="icon" aria-hidden="true">
+                                <use xlink:href="#icon-shengji"></use>
+                            </svg>
                         </span>
                     </div>
                     <!--关注-->
@@ -39,26 +43,107 @@
             </div>
         </Header>
         <Content>
-           
+            <ul class="tab-list">
+                <li @click="code=0" :class="code==0 ? 'active':''">热文</li>
+                <li @click="code=1" :class="code==1 ? 'active':''">超话</li>
+                <li @click="code=2" :class="code==2 ? 'active':''">他的圈子</li>
+                <li @click="code=3" :class="code==3 ? 'active':''">最近在看</li>
+            </ul>
+            <!-- 内容 -->
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <Row>
+                            <Col span="3" align="left">
+                            <Avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" />
+                            </Col>
+                            <Col span="21" align="left">
+                            <p>我是蓉妹妹</p>
+                            <p class="time">5分钟之前</p>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col span="24" align="left"> 我是蓉妹妹我是蓉妹妹我是蓉妹妹我是蓉妹妹我是蓉妹妹我是蓉妹妹
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col span="24" align="left">
+                            <img src="https://i.loli.net/2017/08/21/599a521472424.jpg" class="illustration" />
+                            <img src="https://i.loli.net/2017/08/21/599a521472424.jpg" class="illustration" />
+                            <img src="https://i.loli.net/2017/08/21/599a521472424.jpg" class="illustration" />
+                            <img src="https://i.loli.net/2017/08/21/599a521472424.jpg" class="illustration" />
+                            <img src="https://i.loli.net/2017/08/21/599a521472424.jpg" class="illustration" />
+                            <img src="https://i.loli.net/2017/08/21/599a521472424.jpg" class="illustration" />
+                            <img src="https://i.loli.net/2017/08/21/599a521472424.jpg" class="illustration" />
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col span="12" align="left">
+                            <span class="label">#超话</span>
+                            <span class="label">#超话</span>
+                            <span class="label">#超话</span>
+                            </Col>
+                            <Col span="12" align="right">
+                            <span>
+                                <svg class="icon" aria-hidden="true">
+                                    <use xlink:href="#icon-dianzan"></use>
+                                </svg>
+                                12
+                            </span>
+                            <span>
+                                <svg class="icon" aria-hidden="true">
+                                    <use xlink:href="#icon-pinglun1"></use>
+                                </svg>
+                                12
+                            </span>
+                            </Col>
+                        </Row>
+                    </div>
+                    <div class="swiper-slide">超话</div>
+                    <div class="swiper-slide">他加入的圈子</div>
+                    <div class="swiper-slide">最近在看</div>
+                </div>
+            </div>
         </Content>
     </Layout>
 </template>
 
 <script>
+//swiper
+import Swiper from "swiper";
+import "swiper/dist/css/swiper.css";
+import "./../assets/fonts/iconfont.js";
 export default {
   components: {},
   props: {},
   data() {
-    return {};
+    return {
+      code: 0 //选中
+    };
   },
   watch: {},
   computed: {},
   methods: {},
   created() {},
-  mounted() {}
+  mounted() {
+    var vm = this;
+    var mySwiper = new Swiper(".swiper-container", {
+      on: {
+        slideChangeTransitionStart: function() {
+          vm.code = this.activeIndex;
+        }
+      }
+    });
+  }
 };
 </script>
 <style lang="scss" scoped>
+.icon {
+  width: 0.42rem;
+  height: 0.42rem;
+  fill: currentColor;
+  overflow: hidden;
+}
 .iconfont {
   color: #ffffff;
 }
@@ -71,7 +156,7 @@ export default {
   background-color: #ff3f40;
 }
 .ivu-layout-content {
-  margin-top: 0.28rem;
+  margin-top: 0.88rem;
 }
 
 //导航栏
@@ -178,5 +263,54 @@ export default {
     font-size: 0.28rem;
     font-weight: 550;
   }
+}
+.tab-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  li {
+    position: relative;
+    flex: 1;
+  }
+}
+.active::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  top: 0.35rem;
+  width: 40%;
+  left: 30%;
+  border-radius: 3px;
+  border-top: 6px solid #ff4b67;
+  -webkit-transform: scaleY(0.5);
+  transform: scaleY(0.5);
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+}
+.swiper-container {
+  margin-top: 0.32rem;
+}
+.time {
+  color: #a1a1a1;
+  font-size: 0.2rem;
+}
+.illustration {
+  width: 1rem;
+  border-radius: 3px;
+  display: inline-block;
+  margin: 0rem 0.08rem 0rem 0.08rem;
+  height: 0.98rem;
+}
+.label {
+  border-radius: 0.44rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 0.88rem;
+  height: 0.44rem;
+  margin-right: 0.2rem;
+  border: #a1a1a1 solid 1px;
+  padding: 0.01rem;
+  font-size: 0.2rem;
 }
 </style>

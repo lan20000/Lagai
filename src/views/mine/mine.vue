@@ -34,9 +34,9 @@
             </div>
         </Header>
         <Content>
-             <Row>
+            <Row>
                 <Col span="24" align="left">
-                    <span class="my-region-title">我的工具</span>
+                <span class="my-region-title">我的工具</span>
                 </Col>
             </Row>
             <Row>
@@ -52,7 +52,7 @@
             </Row>
             <Row>
                 <Col span="24" align="left">
-                    <span class="my-region-title">我的相关</span>
+                <span class="my-region-title">我的相关</span>
                 </Col>
             </Row>
             <Row class="my-list">
@@ -66,6 +66,14 @@
             <Row class="my-list">
                 <Col span="12" align="left">
                 <span class="my-list-title">我的形象贴</span>
+                </Col>
+                <Col span="12" align="right">
+                <i class="iconfont icon-jinru"></i>
+                </Col>
+            </Row>
+            <Row class="my-list">
+                <Col span="12" align="left">
+                <span class="my-list-title">我的权限</span>
                 </Col>
                 <Col span="12" align="right">
                 <i class="iconfont icon-jinru"></i>
@@ -96,7 +104,7 @@ export default {
         dragSize: 10
       }
     });
-    mySwiper.scrollbar.$dragEl.css('background','#ff3f40');
+    mySwiper.scrollbar.$dragEl.css("background", "#ff3f40");
   }
 };
 </script>
@@ -110,9 +118,9 @@ export default {
 //   font-size: 0.32rem;
 //   font-weight: 550;
 // }
-.my-region-title{
-    font-size: 0.28rem;
-  font-weight: 550;  
+.my-region-title {
+  font-size: 0.28rem;
+  font-weight: 550;
 }
 .tool {
   height: 100%;
