@@ -150,8 +150,7 @@ export default {
   },
   watch: {},
   computed: {},
-  methods: {
-      
+  methods: {     
     
     titlehandle(status) {
       if (status) {

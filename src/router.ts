@@ -113,6 +113,14 @@ export default new Router({
             path: '/Us',
             name: 'Us',
             component: () => import(/* webpackChunkName: "about" */ './views/set/AboutUs.vue'),
+        }, {
+            path: '/circles',
+            name: 'circles',
+            component: () => import(/* webpackChunkName: "about" */ './views/circle.vue'),
+        }, {
+            path: '/publish',
+            name: 'publish',
+            component: () => import(/* webpackChunkName: "about" */ './views/publish.vue'),
         }
     ],
 });

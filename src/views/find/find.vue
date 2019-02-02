@@ -12,7 +12,7 @@
                 <Col span="12"  align="right">
                 <div class="type-menu-sos">
                     <!-- <input type="text" class="sos-input" @blur="sosuo=false" @focus="sosuo=true" placeholder="找点啥..." v-show="sos" />-->
-                    <span><i class="iconfont icon-bianji-tianxie"></i></span>
+                    <span><i class="iconfont icon-bianji-tianxie" @click="$router.replace('/publish')"></i></span>
                     <span><i class="iconfont icon-sousuo"></i></span>
                 </div>
                 </Col>
