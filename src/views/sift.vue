@@ -30,7 +30,7 @@ export default {
   mounted() {}
 };
 </script>
-<style lang="scss" scoped>
+<style lang="scss" scoped="scoped">
 .header {
   background-color: #fa526b;
   height: 1.2rem;

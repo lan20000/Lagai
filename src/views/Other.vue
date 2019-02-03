@@ -210,7 +210,7 @@ export default {
   }
 };
 </script>
-<style lang="scss" scoped>
+<style lang="scss" scoped="scoped">
 .topHeader {
   height: 0.88rem !important;
   position: fixed;

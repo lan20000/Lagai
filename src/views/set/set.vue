@@ -78,7 +78,7 @@ export default {
   mounted() {}
 };
 </script>
-<style lang="scss" scoped>
+<style lang="scss" scoped="scoped">
 .header-title {
   font-size: 0.32rem;
   font-weight: 550;

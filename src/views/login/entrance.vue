@@ -13,7 +13,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" scoped="scoped">
 @import "./../../assets/fonts/iconfont.css";
 
 .body-content{

@@ -137,7 +137,7 @@ export default {
   }
 };
 </script>
-<style lang="scss" scoped>
+<style lang="scss" scoped="scoped">
 .icon {
   width: 0.42rem;
   height: 0.42rem;

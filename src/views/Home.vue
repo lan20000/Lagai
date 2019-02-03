@@ -55,7 +55,7 @@ export default {
   mounted() {}
 };
 </script>
-<style lang="scss" scoped>
+<style lang="scss" scoped="scoped">
 @import "./../assets/public/animate.css";
 .foot {
   width: 100%;
