@@ -94,6 +94,7 @@ export default {
   li {
     border-radius: 4px;
     padding: 0.28rem;
+    border-bottom: #cccccc solid 1px;
   }
 }
 .user-name {

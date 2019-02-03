@@ -14,7 +14,7 @@
             <ul class="label-list">
                 <li v-for="(i,index) in labelList" v-cloak >{{i}}</li>
             </ul>
-            <div class="affirm" @click="$emit('finish', labelactive)">确定 (2/3)</div>
+            <div class="affirm" @click="$emit('finish', [labelactive,0])">确定 (2/3)</div>
         </div>
     </div>
 </template>

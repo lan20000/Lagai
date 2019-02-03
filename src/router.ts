@@ -121,6 +121,11 @@ export default new Router({
             path: '/publish',
             name: 'publish',
             component: () => import(/* webpackChunkName: "about" */ './views/publish.vue'),
+        }, {
+            path: '/pasteDetails',
+            name: 'pasteDetails',
+            component: () => import(/* webpackChunkName: "about" */ './views/pasteDetails.vue'),
         }
+        // 
     ],
 });

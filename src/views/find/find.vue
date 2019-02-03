@@ -1,31 +1,38 @@
 <template>
-    <Layout>
-        <!-- 功能块 -->
-        <Affix>
-        <Header>
-            <Row>
-                <Col span="12">
-                <span class="type-menu" @click="typecode=0,$router.replace('/attention')" :class="typecode==0 ? 'type-menu-active' : ''">关注</span>
-                <span class="type-menu" @click="typecode=1,$router.replace('/all')" :class="typecode==1 ? 'type-menu-active' : ''">全部</span>
-                <span class="type-menu" @click="typecode=2,$router.replace('/circle')" :class="typecode==2 ? 'type-menu-active' : ''">圈子</span>
-                </Col>
-                <Col span="12"  align="right">
-                <div class="type-menu-sos">
-                    <!-- <input type="text" class="sos-input" @blur="sosuo=false" @focus="sosuo=true" placeholder="找点啥..." v-show="sos" />-->
-                    <span><i class="iconfont icon-bianji-tianxie" @click="$router.replace('/publish')"></i></span>
-                    <span><i class="iconfont icon-sousuo"></i></span>
-                </div>
-                </Col>
-            </Row>
-        </Header>
-        </Affix>
+    <div>
         <sos :issou="sosuo"></sos>
-        <Content>
-            <!-- <transition name="Startam-succeed" leave-active-class="animated rollOut" > -->
-            <router-view></router-view>
-            <!-- </transition> -->
-        </Content>
-    </Layout>
+        <Layout>
+            <!-- 功能块 -->
+            <Affix>
+                <Header>
+                    <Row>
+                        <Col span="12">
+                        <span class="type-menu" @click="typecode=0,$router.replace('/attention')" :class="typecode==0 ? 'type-menu-active' : ''">关注</span>
+                        <span class="type-menu" @click="typecode=1,$router.replace('/all')" :class="typecode==1 ? 'type-menu-active' : ''">全部</span>
+                        <span class="type-menu" @click="typecode=2,$router.replace('/circle')" :class="typecode==2 ? 'type-menu-active' : ''">圈子</span>
+                        </Col>
+                        <Col span="12" align="right">
+                        <div class="type-menu-sos">
+                            <!-- <input type="text" class="sos-input" @blur="sosuo=false" @focus="sosuo=true" placeholder="找点啥..." v-show="sos" />-->
+                            <span>
+                                <i class="iconfont icon-bianji-tianxie" @click="$router.replace('/publish')"></i>
+                            </span>
+                            <span>
+                                <i class="iconfont icon-sousuo" @click="sosuo=true"></i>
+                            </span>
+                        </div>
+                        </Col>
+                    </Row>
+                </Header>
+            </Affix>
+
+            <Content>
+                <!-- <transition name="Startam-succeed" leave-active-class="animated rollOut" > -->
+                <router-view></router-view>
+                <!-- </transition> -->
+            </Content>
+        </Layout>
+    </div>
 </template>
 
 <script>
@@ -76,8 +83,8 @@ export default {
     font-size: 0.28rem;
   }
 }
-.ivu-layout-content{
-    padding: 0rem !important;
+.ivu-layout-content {
+  padding: 0rem !important;
 }
 // .active {
 //   margin: 0.12rem 0rem;
@@ -135,9 +142,9 @@ export default {
   border-radius: 50%;
 }
 .type-menu-sos {
-//   display: flex;
-//   align-items: center;
-//   justify-content: flex-end;
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: flex-end;
   span {
     height: 0.52rem;
     overflow: hidden;
@@ -149,8 +156,9 @@ export default {
     border-radius: 50%;
     background-color: #ff4b67;
   }
-  .icon-sousuo,.icon-bianji-tianxie {
-      color: #ffffff;
+  .icon-sousuo,
+  .icon-bianji-tianxie {
+    color: #ffffff;
   }
 }
 .sos-input {

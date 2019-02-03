@@ -1,8 +1,9 @@
 <template>
     <div>
         <!-- <transition name="Startam-option" enter-active-class="animated" leave-active-class="animated"> -->
-        <labels @finish="label" @close="unfold = false" v-show="unfold"></labels>
+        <labels v-show="tag" @finish="label" @close="tag = false"></labels>
         <!-- </transition> -->
+        <Dynamicpower v-show="power" @finish="label" @close="power = false" ></Dynamicpower>
         <Layout>
             <Header>
                 <Row>
@@ -28,24 +29,24 @@
                 <Row>
                     <Col span="24" class="text-left">
                     <ul class="label-content">
-                        <li class="new-label" @click="unfold=true">+添加标签</li>
+                        <li class="new-label" @click="tag=true">+添加标签</li>
                     </ul>
                     </Col>
                 </Row>
             </Content>
             <Footer>
-                <div @click="unfold=true">
-                    <Row class="option">
-                        <Col span="12" class="text-left">
-                        <span class="iconfont icon-yonghu"></span>&nbsp;
-                        <span>谁可以看</span>
-                        </Col>
-                        <Col span="12" class="text-right">
-                        <span class="iconfont icon-jinru"></span>
-                        </Col>
-                    </Row>
-                </div>
-                <div @click="unfold=true">
+                <Row class="option">
+                    <Col span="12" class="text-left">
+                    <span class="iconfont icon-yonghu"></span>&nbsp;
+                    <span>谁可以看</span>
+                    </Col>
+                    <Col span="12" class="text-right">
+                    <p @click="power=true">{{powertxt}}
+                        <span class="iconfont icon-jinru" ></span>
+                    </p>
+                    </Col>
+                </Row>
+                <div>
                     <Row class="option">
                         <Col span="12" class="text-left">
                         <span>@&nbsp;&nbsp;&nbsp;那个人</span>
@@ -62,15 +63,18 @@
 </template>
 
 <script>
-import astrict from "./../components/astrict.vue";
+// import astrict from "./../components/astrict.vue";
 import labels from "./../components/labels.vue";
+import Dynamicpower from "./../components/Dynamicpower.vue";
 export default {
-  components: { astrict, labels },
+  components: { labels, Dynamicpower },
   props: {},
   data() {
     return {
       imgsub: [], //图片集合
-      unfold: false //是否展示相关组件
+      tag: false, //标签是否显示
+      power: false, //权限
+      powertxt:'公开'//权限文本
     };
   },
   watch: {},
@@ -78,8 +82,9 @@ export default {
   methods: {
     //处理标签
     label(msg) {
-      this.unfold = false;
-      console.log(msg);
+        msg[1]==0 ? this.tag=false : this.power=false;
+        console.log(msg)
+        this.powertxt = msg[0];
     }
   },
   created() {},

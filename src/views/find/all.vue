@@ -5,53 +5,53 @@
                 <div class="findTitle">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
-                            <svg class="icon" aria-hidden="true" @click="switcher(0)">
+                            <!-- <svg class="icon" aria-hidden="true" @click="switcher(0)">
                                 <use xlink:href="#icon-weizhi"></use>
-                            </svg>
-                            <!-- <span :class="meunCode==8 ? 'active' : ''">附近</span> -->
+                            </svg> -->
+                            <span :class="meunCode==0 ? 'active' : ''">附近</span>
                         </div>
                         <div class="swiper-slide">
-                            <svg class="icon" aria-hidden="true" @click="switcher(1)">
+                            <!-- <svg class="icon" aria-hidden="true" @click="switcher(1)">
                                 <use xlink:href="#icon-shu"></use>
-                            </svg>
-                            <!-- <span :class="meunCode==8 ? 'active' : ''">书汇</span> -->
+                            </svg> -->
+                            <span :class="meunCode==1 ? 'active' : ''">图文</span>
                         </div>
                         <div class="swiper-slide">
-                            <svg class="icon" aria-hidden="true" @click="switcher(2)">
+                            <!-- <svg class="icon" aria-hidden="true" @click="switcher(2)">
                                 <use xlink:href="#icon-meishi"></use>
-                            </svg>
-                            <!-- <span :class="meunCode==8 ? 'active' : ''">厨房</span> -->
+                            </svg> -->
+                            <span :class="meunCode==2 ? 'active' : ''">视频</span>
                         </div>
                         <div class="swiper-slide">
-                            <svg class="icon" aria-hidden="true" @click="switcher(3)">
+                            <!-- <svg class="icon" aria-hidden="true" @click="switcher(3)">
                                 <use xlink:href="#icon-lvhang-"></use>
-                            </svg>
-                            <!-- <span :class="meunCode==8 ? 'active' : ''">旅行</span> -->
+                            </svg> -->
+                            <span :class="meunCode==3 ? 'active' : ''">旅行</span>
                         </div>
-                        <div class="swiper-slide">
+                        <!-- <div class="swiper-slide">
                             <svg class="icon" aria-hidden="true" @click="switcher(4)">
                                 <use xlink:href="#icon-sheyingji"></use>
                             </svg>
-                            <!-- <span :class="meunCode==8 ? 'active' : ''">艺术</span> -->
-                        </div>
-                        <div class="swiper-slide">
+                            <span :class="meunCode==8 ? 'active' : ''">艺术</span>
+                        </div> -->
+                        <!-- <div class="swiper-slide">
                             <svg class="icon" aria-hidden="true" @click="switcher(5)">
                                 <use xlink:href="#icon-lvhang-"></use>
                             </svg>
-                            <!-- <span :class="meunCode==8 ? 'active' : ''">运动</span> -->
-                        </div>
-                        <div class="swiper-slide">
+                            <span :class="meunCode==8 ? 'active' : ''">运动</span>
+                        </div> -->
+                        <!-- <div class="swiper-slide">
                             <svg class="icon" aria-hidden="true" @click="switcher(6)">
                                 <use xlink:href="#icon-niandugongzuogaishu"></use>
                             </svg>
-                            <!-- <span :class="meunCode==8 ? 'active' : ''">互联网</span> -->
-                        </div>
-                        <div class="swiper-slide">
+                            <span :class="meunCode==8 ? 'active' : ''">互联网</span>
+                        </div> -->
+                        <!-- <div class="swiper-slide">
                             <svg class="icon" aria-hidden="true" @click="switcher(7)">
                                 <use xlink:href="#icon-renminshenghuo"></use>
                             </svg>
-                            <!-- <span :class="meunCode==8 ? 'active' : ''">生活</span> -->
-                        </div>
+                            <span :class="meunCode==8 ? 'active' : ''">生活</span>
+                        </div> -->
                     </div>
                 </div>
                 <div class="menu-sort" @click="sortcode==0 ? sortcode=1 : sortcode=0">
@@ -289,24 +289,44 @@ export default {
   width: 100%;
   display: inline-block;
 }
+.findTitle .swiper-wrapper {
+  margin: 0rem 0.12rem;
+}
 .findTitle .swiper-wrapper .swiper-slide-active {
   position: relative;
 }
-.findTitle .swiper-wrapper .swiper-slide-active::after {
-  content: "";
-  position: absolute;
-  z-index: 0;
-  bottom: -2px;
-  width: 39%;
-  left: 30%;
-  border-radius: 3px;
-  height: 4px;
-  border-top: 6px solid #ff4b67;
-  -webkit-transform: scaleY(0.5);
-  transform: scaleY(0.5);
-  -webkit-transform-origin: 0 0;
-  transform-origin: 0 0;
+.findTitle .swiper-wrapper .swiper-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+.findTitle .swiper-wrapper .swiper-slide span {
+  margin: 0.12rem 0rem;
+  height: 0.35rem;
+  width: 50%;
+}
+.active {
+  background-color: #ff3f40;
+  border-radius: 10%;
+  color: #ffffff;
+  border-radius: 0.175rem;
+  font-size: 0.28rem;
+}
+// .findTitle .swiper-wrapper .swiper-slide-active::after {
+//   content: "";
+//   position: absolute;
+//   z-index: 0;
+//   bottom: -2px;
+//   width: 39%;
+//   left: 30%;
+//   border-radius: 3px;
+//   height: 4px;
+//   border-top: 6px solid #ff4b67;
+//   -webkit-transform: scaleY(0.5);
+//   transform: scaleY(0.5);
+//   -webkit-transform-origin: 0 0;
+//   transform-origin: 0 0;
+// }
 .findContent {
   margin: 0rem 0.2rem !important;
 }
@@ -348,14 +368,7 @@ export default {
     margin-left: 0.14rem;
   }
 }
-// .active {
-//   margin: 0.12rem 0rem;
-//   background-color: #ff3f40;
-//   border-radius: 10%;
-//   width: 50%;
-//   color: #ffffff;
-//   font-size: 0.28rem;
-// }
+
 // .findTitle .swiper-wrapper .swiper-slide-active::before {
 //   content: "";
 //   position: absolute;

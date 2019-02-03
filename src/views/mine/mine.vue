@@ -22,13 +22,13 @@
                     <span>原创</span>
                     </Col>
                     <Col span="6">
-                    <span>帖子</span>
+                    <span></span>
                     </Col>
                     <Col span="6">
-                    <span>帖子</span>
+                    <span></span>
                     </Col>
                     <Col span="6">
-                    <span>帖子</span>
+                    <span></span>
                     </Col>
                 </Row>
             </div>
@@ -43,8 +43,12 @@
                 <Col span="24" align="left" class="toolbar">
                 <div class="tool">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide">slider1</div>
-                        <div class="swiper-slide">slider2</div>
+                        <div class="swiper-slide">
+                            <span>暂时没有开放哦</span>
+                        </div>
+                        <div class="swiper-slide">
+                            <span>暂时没有开放哦</span>
+                        </div>
                     </div>
                     <div class="swiper-scrollbar"></div>
                 </div>
@@ -165,7 +169,7 @@ export default {
 }
 .toolbar {
   width: 100%;
-  border: #ff3f40 solid 1px;
+  //   border: #ff3f40 solid 1px;
   padding: 0.25rem;
   height: 2.8rem;
   border-radius: 4px;
