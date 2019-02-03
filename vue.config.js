@@ -7,7 +7,7 @@
 
 module.exports = {
     // 基本路径
-    publicPath: './',
+    publicPath: '/',
     // 输出文件目录
     outputDir: 'dist',
     // eslint-loader 是否在保存的时候检查
@@ -27,9 +27,10 @@ module.exports = {
         // 是否使用css分离插件 ExtractTextPlugin
         extract: false,
         // 开启 CSS source maps?
-        sourceMap: true,
+        sourceMap: false,
         // css预设器配置项
-        loaderOptions: {},
+        loaderOptions: {
+        },
         // 启用 CSS modules for all css / pre-processor files.
         modules: false
     },
@@ -42,7 +43,7 @@ module.exports = {
     // // PWA 插件相关配置
     // // see https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-pwa
     pwa: {},
-    
+
     // webpack-dev-server 相关配置
     devServer: {
         open: process.platform === 'darwin',

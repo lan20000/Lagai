@@ -13,7 +13,7 @@
                         </div>
                         </Col>
                         <Col span="12" align="right" class="state-right">
-                        <span class="infuse">+</span>
+                        <span class="infuse iconfont icon-hook-w"></span>
                         </Col>
                     </Row>
                 </li>
