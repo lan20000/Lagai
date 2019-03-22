@@ -4,7 +4,7 @@
   </div>
 </template>
 <script>
-// import foot from '@/components/foot/footMuen.vue'; // @ is an alias to /src
+// import foot from '@/components/foot/footMuen.vue'; // @ is an alias to /srchk
 export default {
    data(){
       return {
